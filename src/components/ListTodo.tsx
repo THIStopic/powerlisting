@@ -16,9 +16,10 @@ const MainContent = () => {
 
     return (
         <div>
+            <h1 className='mb-2'>Tareas recientes:</h1>
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todos.map((todo: any) => (
-                    <li key={todo.id} className="flex w-full border bg-white border-slate-300 shadow-lg rounded-lg p-6">
+                    <li key={todo.id} className="flex w-full bg-white border-slate-300 shadow-lg rounded-sm p-6">
                         <div className="w-1/2 left_content flex flex-col items-start truncate">
                             {todo.completed ? (
                                 <span className="text-base font-medium text-slate-400 line-through w-full truncate">{todo.title}</span>
