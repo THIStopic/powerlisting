@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addTodo } from '../store/features/todos';
+import toast from 'react-hot-toast';
 
 const AddTodo = () => {
     const [isTaskFocused, setIsTaskFocused] = useState(false);
@@ -37,6 +38,7 @@ const AddTodo = () => {
             firstName.value = '';
             description.value = '';
         }
+        toast.success('Tarea añadida correctamente.');
     };
 
     const taskLabelStyle = `absolute left-3 top-1 transition-all duration-300 ease-in-out text-sm pointer-events-none ${

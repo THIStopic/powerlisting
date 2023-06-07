@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo } from '../store/features/todos';
+import toast from 'react-hot-toast';
 
 const MostRecent = () => {
     const todos = useSelector((state: any) => state.todos.todos);
@@ -13,6 +14,7 @@ const MostRecent = () => {
     const handleDelete = (event: React.MouseEvent<HTMLSpanElement>) => {
         const id = parseInt(event.currentTarget.id);
         dispatch(deleteTodo(id));
+        toast.success('Tarea eliminada correctamente.');
     };
 
     return (

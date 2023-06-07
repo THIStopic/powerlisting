@@ -1,4 +1,5 @@
 import './App.css';
+import { Toaster } from 'react-hot-toast';
 import AddTodo from './components/AddTodo';
 import MostRecent from './components/MostRecent';
 import CompletedTodos from './components/CompletedTodos';
@@ -8,6 +9,7 @@ function App() {
 
     return (
         <div className="App font-poppins bg-slate-100 h-screen p-12">
+            <Toaster />
             <h1 className="text-2xl text-center text-slate-700 font-semibold mb-8">Vite + React</h1>
             <AddTodo />
             <Separator />

@@ -37,3 +37,4 @@ TodoTS está hecho con las siguientes tecnologías y librerías:
 - [Vite](https://vitejs.dev/): Una herramienta de desarrollo web moderna y rápida.
 - [Tailwind CSS](https://tailwindcss.com/): Un framework de CSS que te permite crear diseños personalizados sin salir del HTML.
 - [Redux](https://es.redux.js.org/): Una biblioteca de JavaScript para el manejo del estado de la aplicación.
+- [react-hot-toast](https://react-hot-toast.com/): Una librería de notificaciones para React.
