@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo } from '../store/features/todos';
 
-const MainContent = () => {
+const MostRecent = () => {
     const todos = useSelector((state: any) => state.todos.todos);
     const dispatch = useDispatch();
 
@@ -10,15 +10,17 @@ const MainContent = () => {
         dispatch(toggleTodo(id));
     };
 
-    const handleDelete = (id: number) => {
+    const handleDelete = (event: React.MouseEvent<HTMLSpanElement>) => {
+        const id = parseInt(event.currentTarget.id);
         dispatch(deleteTodo(id));
     };
 
     return (
         <div>
-            <h1 className='mb-2'>Tareas recientes:</h1>
+            <h1 className="mb-4">Tareas recientes:</h1>
+
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {todos.map((todo: any) => (
+                {todos.slice(0, 3).map((todo: any) => (
                     <li key={todo.id} className="flex w-full bg-white border-slate-300 shadow-lg rounded-sm p-6">
                         <div className="w-1/2 left_content flex flex-col items-start truncate">
                             {todo.completed ? (
@@ -31,7 +33,9 @@ const MainContent = () => {
                             <span className="text-sm text-slate-600 w-full truncate">{todo.date}</span>
                         </div>
                         <div className="w-1/2 right_content flex flex-col items-end justify-between">
-                            <span className="material-icons-round cursor-pointer text-slate-600 scale-75">more_vert</span>
+                            <span className="material-icons-round cursor-pointer text-red-600 scale-75" onClick={handleDelete} id={todo.id.toString()}>
+                                remove_circle_outline
+                            </span>
                             {todo.completed ? (
                                 <span className="text-xs bg-green-100 text-green-900 font-semibold px-2 rounded-sm truncate">Completed</span>
                             ) : (
@@ -45,4 +49,4 @@ const MainContent = () => {
     );
 };
 
-export default MainContent;
+export default MostRecent;
