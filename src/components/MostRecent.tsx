@@ -1,3 +1,5 @@
+import { useRef, useEffect } from 'react';
+import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo } from '../store/features/todos';
 import toast from 'react-hot-toast';
@@ -5,6 +7,7 @@ import toast from 'react-hot-toast';
 const MostRecent = () => {
     const todos = useSelector((state: any) => state.todos.todos);
     const dispatch = useDispatch();
+    const parent = useRef<HTMLUListElement>(null);
 
     // Pendiente de añadir.
     const handleToggle = (id: number) => {
@@ -17,11 +20,15 @@ const MostRecent = () => {
         toast.success('Tarea eliminada correctamente.');
     };
 
+    useEffect(() => {
+        parent.current && autoAnimate(parent.current);
+    }, [parent]);
+
     return (
         <div>
             <h1 className="mb-4">Tareas recientes:</h1>
 
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <ul ref={parent} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todos.slice(0, 3).map((todo: any) => (
                     <li key={todo.id} className="flex w-full bg-white border-slate-300 shadow-lg rounded-sm p-6">
                         <div className="w-1/2 left_content flex flex-col items-start truncate">

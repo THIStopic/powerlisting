@@ -1,10 +1,14 @@
+import { useRef, useEffect } from 'react';
+import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo } from '../store/features/todos';
 import toast from 'react-hot-toast';
 
+
 const CompletedTodos = () => {
     const todos = useSelector((state: any) => state.todos.todos);
     const dispatch = useDispatch();
+    const parent2 = useRef<HTMLUListElement>(null);
 
     // Pendiente de añadir.
     const handleToggle = (id: number) => {
@@ -17,13 +21,17 @@ const CompletedTodos = () => {
         toast.success('Tarea eliminada correctamente.');
     };
 
+    useEffect(() => {
+        parent2.current && autoAnimate(parent2.current);
+    }, [parent2]);
+
     const completedTodos = todos.filter((todo: any) => todo.completed);
 
     return (
         <div>
             <h1 className="mb-4">Tareas completadas:</h1>
 
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <ul ref={parent2} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {completedTodos ? (
                     completedTodos.map((todo: any) => (
                         <li key={todo.id} className="flex w-full bg-white border-slate-300 shadow-lg rounded-sm p-6">
