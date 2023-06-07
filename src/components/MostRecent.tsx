@@ -46,9 +46,9 @@ const MostRecent = () => {
                                 remove_circle_outline
                             </span>
                             {todo.completed ? (
-                                <span className="text-xs bg-green-100 text-green-900 font-semibold px-2 rounded-sm truncate">Completed</span>
+                                <span className="text-xs bg-green-100 text-green-900 font-semibold px-2 rounded-sm truncate">Completada</span>
                             ) : (
-                                <span className="text-xs bg-red-100 text-red-900 font-semibold px-2 rounded-sm truncate">Incomplete</span>
+                                <span className="text-xs bg-yellow-100 text-yellow-900 font-semibold px-2 rounded-sm truncate">Pendiente</span>
                             )}
                         </div>
                     </li>
