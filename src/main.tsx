@@ -5,7 +5,8 @@ import store from './store';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Provider store={store}>
-        <App />
+        <div className="flex flex-col justify-center items-center bg-slate-100">
+            <App />
+        </div>
     </Provider>
 );
-       
