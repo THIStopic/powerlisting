@@ -85,11 +85,14 @@ const todosSlice = createSlice({
         deleteTodo: (state, action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload);
         },
+        clearTodos: (state) => {
+            state.todos = state.todos.filter((todo) => !todo.completed);
+        }
     },
 });
 
 // Se exportan las acciones creadas por createSlice para poder usarlas en los componentes.
-export const { addTodo, toggleTodo, deleteTodo } = todosSlice.actions;
+export const { addTodo, toggleTodo, deleteTodo, clearTodos } = todosSlice.actions;
 
 // Se exporta al reducer para poder añadirlo al store.
 export default todosSlice.reducer;

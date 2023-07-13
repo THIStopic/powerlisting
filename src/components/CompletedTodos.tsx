@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTodo, deleteTodo } from '../store/features/todos';
+import { toggleTodo, deleteTodo, clearTodos } from '../store/features/todos';
 import toast from 'react-hot-toast';
 
 const CompletedTodos = () => {
@@ -20,6 +20,11 @@ const CompletedTodos = () => {
         toast.success('Tarea eliminada correctamente.');
     };
 
+    const handleClearTodos = () => {
+        dispatch(clearTodos());
+        toast.success('Tareas eliminadas correctamente.');
+    }
+
     useEffect(() => {
         parent2.current && autoAnimate(parent2.current);
     }, [parent2]);
@@ -29,6 +34,8 @@ const CompletedTodos = () => {
     return (
         <div>
             <h1 className="mb-4 font-medium">Tareas completadas:</h1>
+
+            <span className="cursor-pointer bg-slate-500 text-white font-medium py-1 px-6 rounded" onClick={() => handleClearTodos()}>Clear All</span>
 
             <ul ref={parent2} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {completedTodos ? (
