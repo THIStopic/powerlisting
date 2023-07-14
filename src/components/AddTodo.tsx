@@ -90,9 +90,13 @@ const AddTodo = () => {
                 <div className="right_side w-full md:w-1/3">
                     <div className="flex flex-col gap-4 w-full bg-cards shadow-2xl rounded-lg py-4 px-6">
                         <div className="flex flex-col items-start truncate">
-                            <span className="text-base font-medium w-full truncate">{taskValue == '' ? 'Titulo' : taskValue}</span>
-                            <span className="text-sm w-full truncate">{descriptionValue == '' ? 'Descripción' : descriptionValue}</span>
-                            <span className="text-sm w-full truncate">{taskValue == '' && descriptionValue == '' ? 'Fecha' : new Date().toLocaleDateString()}</span>
+                            <span className="text-base font-medium w-full truncate">{taskValue == '' ? 'Titulo de la tarea.' : taskValue}</span>
+                            <span className="text-sm w-full truncate">{descriptionValue == '' ? 'Descripción de la tarea.' : descriptionValue}</span>
+                            <span className="text-sm w-full truncate">
+                                {taskValue === '' && descriptionValue === ''
+                                    ? new Date(0).toLocaleDateString(undefined, { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                    : new Date().toLocaleDateString(undefined, { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                            </span>
                         </div>
                         <div className="left_side flex justify-between">
                             <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate">Pendiente</span>
