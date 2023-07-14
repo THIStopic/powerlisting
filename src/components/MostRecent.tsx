@@ -30,7 +30,11 @@ const MostRecent = () => {
 
     return (
         <div>
-            <h1 className="mb-4 font-medium">Todas las tareas:</h1>
+            {todos.length ? (
+                <h1 className="mb-4 flex justify-start font-medium">Tareas recientes:</h1>
+            ) : (
+                <h1 className="mb-4 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>
+            )}
 
             <ul ref={parent} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todos.slice().reverse().map((todo: any) => (
@@ -48,15 +52,12 @@ const MostRecent = () => {
                         <div className="flex items-center justify-start">
                             <div className="left_side flex items-center w-1/2">
                                 {todo.completed ? (
-                                    <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate">Completada</span>
+                                    <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate" onClick={() => handleToggle(todo.id)}>Completada</span>
                                 ) : (
-                                    <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate">Pendiente</span>
+                                    <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate" onClick={() => handleToggle(todo.id)}>Pendiente</span>
                                 )}
                             </div>
                             <div className="right_side flex justify-end items-center w-1/2">
-                                <span className="material-icons-round cursor-pointer border border-buttonborder text-blue-100 py-1 px-2 rounded scale-75 ml-2" onClick={() => handleToggle(todo.id)}>
-                                    check_circle_outline
-                                </span>
                                 <span
                                     className="material-icons-round cursor-pointer border border-buttonborder text-blue-100 py-1 px-2 rounded scale-75"
                                     onClick={() => handleDelete(todo.id)}
