@@ -41,19 +41,19 @@ const AddTodo = () => {
         toast.success('Tarea añadida correctamente.');
     };
 
-    const taskLabelStyle = `absolute left-3 top-1 transition-all duration-300 ease-in-out text-sm pointer-events-none ${
-        isTaskFocused || taskValue ? 'bg-white -ml-2 px-2 transform -translate-y-4 text-sm text-slate-600' : 'text-slate-300'
+    const taskLabelStyle = `absolute text-primarytext left-3 top-1.5 transition-all duration-300 ease-in-out text-sm pointer-events-none ${
+        isTaskFocused || taskValue ? '-ml-2 px-2 transform -translate-y-4 text-sm text-primarytext' : 'text-slate-600'
     }`;
 
-    const descriptionLabelStyle = `absolute left-3 top-1 transition-all duration-300 ease-in-out text-sm pointer-events-none ${
-        isDescriptionFocused || descriptionValue ? 'bg-white -ml-2 px-2 transform -translate-y-4 text-sm text-slate-600' : 'text-slate-300'
+    const descriptionLabelStyle = `absolute text-primarytext left-3 top-1.5 transition-all duration-300 ease-in-out text-sm pointer-events-none ${
+        isDescriptionFocused || descriptionValue ? '-ml-2 px-2 transform -translate-y-4 text-sm' : 'text-slate-600'
     }`;
 
     return (
         <>
-            <h1 className="text-slate-800 mb-4">Añadir una tarea nueva</h1>
-            <div className="flex flex-col justify-center gap-4 bg-white rounded-md shadow-lg p-6 my-4">
-                <div className="relative">
+            <h1 className="mb-4">Añadir una tarea nueva</h1>
+            <div className="container flex flex-col gap-4">
+                <div className="flex relative">
                     <input
                         type="text"
                         spellCheck="false"
@@ -61,22 +61,22 @@ const AddTodo = () => {
                         onBlur={handleTaskBlur}
                         onChange={handleTaskChange}
                         id="form-input-first-name"
-                        className="border border-slate-200 rounded-sm px-3 py-1.5 w-full text-sm text-slate-500 outline-none"
+                        className="bg-cards rounded px-3 py-3 w-full text-sm text-slate-500 outline-none"
                     />
-                    <label className={taskLabelStyle}>{isTaskFocused ? 'Tarea' : 'Tarea...'}</label>
+                    <label className={taskLabelStyle}>Tarea</label>
                 </div>
-                <div className="relative">
+                <div className="flex relative">
                     <textarea
                         spellCheck="false"
                         onFocus={handleDescriptionFocus}
                         onBlur={handleDescriptionBlur}
                         onChange={handleDescriptionChange}
                         id="form-input-description"
-                        className="border border-slate-200 rounded-sm px-3 py-1.5 w-full text-sm text-slate-500 outline-none"
+                        className="bg-cards rounded px-3 py-3 w-full text-sm text-slate-500 outline-none"
                     />
-                    <label className={descriptionLabelStyle}>{isDescriptionFocused ? 'Descripción' : 'Descripción...'}</label>
+                    <label className={descriptionLabelStyle}>Descripción</label>
                 </div>
-                <button onClick={handleAddTodo} className="w-36 text-sm bg-slate-500 hover:bg-slate-600 text-white font-semibold rounded-sm px-4 py-1 transition-all duration-300 ease-in-out">
+                <button onClick={handleAddTodo} className="w-36 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 transition-all duration-300 ease-in-out">
                     Añadir tarea
                 </button>
             </div>

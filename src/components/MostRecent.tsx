@@ -12,7 +12,11 @@ const MostRecent = () => {
     // Pendiente de añadir.
     const handleToggle = (id: number) => {
         dispatch(toggleTodo(id));
-        toast.success('Estado cambiado correctamente.');
+        if (todos.find((todo: any) => todo.id === id).completed) {
+            toast.success('Tarea Pendiente.');
+        } else {
+            toast.success('Tarea Completada.');
+        }
     };
 
     const handleDelete = (id: number) => {
@@ -26,33 +30,41 @@ const MostRecent = () => {
 
     return (
         <div>
-            <h1 className="mb-4 font-medium">Tareas recientes:</h1>
+            <h1 className="mb-4 font-medium">Todas las tareas:</h1>
 
             <ul ref={parent} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {todos.slice(0, 3).map((todo: any) => (
-                    <li key={todo.id} className="flex w-full bg-white border-slate-300 shadow-lg rounded-sm p-6">
-                        <div className="w-1/2 left_content flex flex-col items-start truncate">
+                {todos.slice().reverse().map((todo: any) => (
+                    <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-lg rounded-lg py-4 px-6">
+                        <div className="flex flex-col items-start truncate">
                             {todo.completed ? (
-                                <span className="text-base font-medium text-slate-400 line-through truncate">{todo.title}</span>
+                                <span className="text-base font-medium line-through truncate">{todo.title}</span>
                             ) : (
-                                <span className="text-base font-medium text-slate-800 w-full truncate">{todo.title}</span>
+                                <span className="text-base font-medium w-full truncate">{todo.title}</span>
                             )}
 
-                            <span className="text-sm text-slate-600 w-full truncate">{todo.description}</span>
-                            <span className="text-sm text-slate-600 w-full truncate">{todo.date}</span>
+                            <span className="text-sm w-full truncate">{todo.description}</span>
+                            <span className="text-sm w-full truncate">{todo.date}</span>
                         </div>
-                        <div className="w-1/2 right_content flex flex-col items-end justify-between">
-                            <span className="material-icons-round cursor-pointer text-red-600 scale-75" onClick={() => handleDelete(todo.id)} id={todo.id.toString()}>
-                                remove_circle_outline
-                            </span>
-                            <span className="material-icons-round cursor-pointer text-blue-600 scale-75" onClick={() => handleToggle(todo.id)}>
-                                check_circle_outline
-                            </span>
-                            {todo.completed ? (
-                                <span className="text-xs bg-green-100 text-green-900 font-semibold px-2 rounded-sm truncate">Completada</span>
-                            ) : (
-                                <span className="text-xs bg-yellow-100 text-yellow-900 font-semibold px-2 rounded-sm truncate">Pendiente</span>
-                            )}
+                        <div className="flex items-center justify-start">
+                            <div className="left_side flex items-center w-1/2">
+                                {todo.completed ? (
+                                    <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate">Completada</span>
+                                ) : (
+                                    <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate">Pendiente</span>
+                                )}
+                            </div>
+                            <div className="right_side flex justify-end items-center w-1/2">
+                                <span className="material-icons-round cursor-pointer border border-buttonborder text-blue-100 py-1 px-2 rounded scale-75 ml-2" onClick={() => handleToggle(todo.id)}>
+                                    check_circle_outline
+                                </span>
+                                <span
+                                    className="material-icons-round cursor-pointer border border-buttonborder text-blue-100 py-1 px-2 rounded scale-75"
+                                    onClick={() => handleDelete(todo.id)}
+                                    id={todo.id.toString()}
+                                >
+                                    delete_outline
+                                </span>
+                            </div>
                         </div>
                     </li>
                 ))}
