@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addTodo } from '../store/features/todos';
-import toast from 'react-hot-toast';
 
 const AddTodo = () => {
     const [isTaskFocused, setIsTaskFocused] = useState(false);
@@ -38,7 +37,6 @@ const AddTodo = () => {
             firstName.value = '';
             description.value = '';
         }
-        toast.success('Tarea añadida correctamente.');
     };
 
     const handleClearTodos = () => {
@@ -110,7 +108,7 @@ const AddTodo = () => {
                     Añadir Tarea
                 </button>
                 <button onClick={handleClearTodos} className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 transition-all duration-300 ease-in-out">
-                    Limpiar Campos
+                    Limpiar
                 </button>
             </div>
         </>

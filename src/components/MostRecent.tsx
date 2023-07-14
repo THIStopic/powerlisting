@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react';
 import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo } from '../store/features/todos';
-import toast from 'react-hot-toast';
 
 const MostRecent = () => {
     const todos = useSelector((state: any) => state.todos.todos);
@@ -15,7 +14,6 @@ const MostRecent = () => {
 
     const handleDelete = (id: number) => {
         dispatch(deleteTodo(id));
-        toast.success('Tarea eliminada correctamente.');
     };
 
     useEffect(() => {
