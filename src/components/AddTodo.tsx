@@ -58,7 +58,7 @@ const AddTodo = () => {
 
     return (
         <>
-            <h1 className="mb-4">Añadir una tarea nueva</h1>
+            <h1 className="mb-4 font-medium">Añadir una tarea nueva</h1>
             <div className="container flex flex-col md:flex-row justify-between md:justify-between gap-8 md:gap-4 mb-4 md:mb-0">
                 <div className="left_side flex flex-col justify-between w-full md:w-2/3 gap-8 md:gap-4">
                     <div className="flex relative">
