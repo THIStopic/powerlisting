@@ -10,6 +10,7 @@ interface Todo {
 
 interface TodosState {
     todos: Todo[];
+    filteredTodos: Todo[];
 }
 
 // Función para formatear la fecha en formato dd/mm/yy.
@@ -65,6 +66,7 @@ const initialState: TodosState = {
             completed: false,
         },
     ],
+    filteredTodos: [],
 };
 
 
@@ -86,14 +88,17 @@ const todosSlice = createSlice({
         deleteTodo: (state, action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload);
         },
+        filterTodos: (state, action) => {
+            state.filteredTodos = [...action.payload];
+        },
         clearTodos: (state) => {
             state.todos = state.todos.filter((todo) => !todo.completed);
-        }
+        },
     },
 });
 
 // Se exportan las acciones creadas por createSlice para poder usarlas en los componentes.
-export const { addTodo, toggleTodo, deleteTodo, clearTodos } = todosSlice.actions;
+export const { addTodo, toggleTodo, deleteTodo, filterTodos, clearTodos } = todosSlice.actions;
 
 // Se exporta al reducer para poder añadirlo al store.
 export default todosSlice.reducer;

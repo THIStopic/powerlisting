@@ -5,6 +5,8 @@ import { toggleTodo, deleteTodo } from '../store/features/todos';
 
 const MostRecent = () => {
     const todos = useSelector((state: any) => state.todos.todos);
+    const filteredTodos = useSelector((state: any) => state.todos.filteredTodos);
+    const todosToShow = filteredTodos.length > 0 ? filteredTodos : todos;
     const dispatch = useDispatch();
     const parent = useRef<HTMLUListElement>(null);
 
@@ -22,10 +24,10 @@ const MostRecent = () => {
 
     return (
         <div>
-            {todos.length ? <h1 className="mb-4 flex justify-start font-medium">Todas las tareas:</h1> : <h1 className="mb-4 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>}
+            {todosToShow.length ? <h1 className="mb-4 flex justify-start font-medium">Todas las tareas:</h1> : <h1 className="mb-4 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>}
 
             <ul ref={parent} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {todos
+                {todosToShow
                     .slice()
                     .reverse()
                     .map((todo: any) => (
