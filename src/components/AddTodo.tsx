@@ -61,8 +61,8 @@ const AddTodo = () => {
     return (
         <>
             <h1 className="mb-4">Añadir una tarea nueva</h1>
-            <div className="container flex flex-col md:flex-row gap-4">
-                <div className="left_side flex flex-col justify-center w-full md:w-2/3 gap-4">
+            <div className="container flex flex-col md:flex-row justify-between md:justify-between gap-8 md:gap-4 mb-4 md:mb-0">
+                <div className="left_side flex flex-col justify-between w-full md:w-2/3 gap-8 md:gap-4">
                     <div className="flex relative">
                         <input
                             type="text"
@@ -71,7 +71,7 @@ const AddTodo = () => {
                             onBlur={handleTaskBlur}
                             onChange={handleTaskChange}
                             id="form-input-first-name"
-                            className="bg-cards rounded px-3 py-3 w-full text-sm text-slate-500 outline-none"
+                            className="bg-cards rounded px-3 py-4 w-full text-sm text-slate-500 outline-none"
                         />
                         <label className={taskLabelStyle}>Tarea</label>
                     </div>
@@ -82,7 +82,7 @@ const AddTodo = () => {
                             onBlur={handleDescriptionBlur}
                             onChange={handleDescriptionChange}
                             id="form-input-description"
-                            className="bg-cards rounded px-3 py-3 w-full text-sm text-slate-500 outline-none"
+                            className="bg-cards rounded px-3 py-4 w-full text-sm text-slate-500 outline-none"
                         />
                         <label className={descriptionLabelStyle}>Descripción</label>
                     </div>
@@ -94,18 +94,19 @@ const AddTodo = () => {
                             <span className="text-sm w-full truncate">{descriptionValue == '' ? 'Descripción' : descriptionValue}</span>
                             <span className="text-sm w-full truncate">{taskValue == '' && descriptionValue == '' ? 'Fecha' : new Date().toLocaleDateString()}</span>
                         </div>
-                        <div className="left_side flex items-center w-1/2">
+                        <div className="left_side flex justify-between">
                             <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate">Pendiente</span>
+                            <span className="text-xs self-end text-blue-100 font-semibold">Preview</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="button_container flex gap-4">
-                <button onClick={handleAddTodo} className="mt-4 w-36 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 transition-all duration-300 ease-in-out">
-                    Añadir tarea
+                <button onClick={handleAddTodo} className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 transition-all duration-300 ease-in-out">
+                    Añadir Tarea
                 </button>
-                <button onClick={handleClearTodos} className="mt-4 w-36 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 transition-all duration-300 ease-in-out">
-                    Limpiar tareas
+                <button onClick={handleClearTodos} className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 transition-all duration-300 ease-in-out">
+                    Limpiar Campos
                 </button>
             </div>
         </>
