@@ -71,7 +71,7 @@ const AddTodo = () => {
                             onBlur={handleTaskBlur}
                             onChange={handleTaskChange}
                             id="form-input-first-name"
-                            className="bg-cards rounded px-3 py-4 w-full text-sm text-slate-500 outline-none"
+                            className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-500 outline-none"
                         />
                         <label className={taskLabelStyle}>Tarea</label>
                     </div>
@@ -82,7 +82,7 @@ const AddTodo = () => {
                             onBlur={handleDescriptionBlur}
                             onChange={handleDescriptionChange}
                             id="form-input-description"
-                            className="bg-cards rounded px-3 py-4 w-full text-sm text-slate-500 outline-none"
+                            className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-500 resize-none outline-none"
                         />
                         <label className={descriptionLabelStyle}>Descripción</label>
                     </div>
