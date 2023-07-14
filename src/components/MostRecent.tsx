@@ -31,14 +31,14 @@ const MostRecent = () => {
     return (
         <div>
             {todos.length ? (
-                <h1 className="mb-4 flex justify-start font-medium">Tareas recientes:</h1>
+                <h1 className="mb-4 flex justify-start font-medium">Todas las tareas:</h1>
             ) : (
                 <h1 className="mb-4 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>
             )}
 
             <ul ref={parent} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todos.slice().reverse().map((todo: any) => (
-                    <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-lg rounded-lg py-4 px-6">
+                    <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
                         <div className="flex flex-col items-start truncate">
                             {todo.completed ? (
                                 <span className="text-base font-medium line-through truncate">{todo.title}</span>
@@ -52,7 +52,7 @@ const MostRecent = () => {
                         <div className="flex items-center justify-start">
                             <div className="left_side flex items-center w-1/2">
                                 {todo.completed ? (
-                                    <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate" onClick={() => handleToggle(todo.id)}>Completada</span>
+                                    <span className="text-xs border border-buttonborder text-green-100 font-semibold py-1 px-2 rounded cursor-pointer truncate" onClick={() => handleToggle(todo.id)}>Completada</span>
                                 ) : (
                                     <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate" onClick={() => handleToggle(todo.id)}>Pendiente</span>
                                 )}
