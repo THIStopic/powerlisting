@@ -60,7 +60,7 @@ const AddTodo = () => {
         <>
             <h1 className="mb-4 font-medium">Añadir una tarea nueva</h1>
             <div className="container flex flex-col md:flex-row justify-between md:justify-between gap-8 md:gap-4 mb-4 md:mb-0">
-                <div className="left_side flex flex-col justify-between w-full md:w-2/3 gap-8 md:gap-4">
+                <div className="left_side flex flex-col justify-between shadow-xl w-full md:w-2/3 gap-8 md:gap-4">
                     <div className="flex relative">
                         <input
                             type="text"
@@ -86,7 +86,7 @@ const AddTodo = () => {
                     </div>
                 </div>
                 <div className="right_side w-full md:w-1/3">
-                    <div className="flex flex-col gap-4 w-full bg-cards shadow-2xl rounded-lg py-4 px-6">
+                    <div className="flex flex-col gap-4 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
                         <div className="flex flex-col items-start truncate">
                             <span className="text-base font-medium w-full truncate">{taskValue == '' ? 'Titulo de la tarea.' : taskValue}</span>
                             <span className="text-sm w-full truncate">{descriptionValue == '' ? 'Descripción de la tarea.' : descriptionValue}</span>

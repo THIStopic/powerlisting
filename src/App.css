@@ -3,3 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sampletooltip {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.75rem !important;
+    background-color: #222327 !important;
+}

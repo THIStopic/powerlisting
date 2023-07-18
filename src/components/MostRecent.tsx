@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo } from '../store/features/todos';
+import { Tooltip } from 'react-tooltip';
 
 const MostRecent = () => {
     const todos = useSelector((state: any) => state.todos.todos);
@@ -66,9 +67,13 @@ const MostRecent = () => {
                                             Pendiente
                                         </span>
                                     )}
+                                <Tooltip className='sampletooltip' id={todo.id.toString()} />
                                 </div>
                                 <div className="right_side flex justify-end items-center w-1/2">
                                     <span
+                                        data-tooltip-id={todo.id.toString()}
+                                        data-tooltip-content="Eliminar"
+                                        data-tooltip-place="left"
                                         className="material-icons-round cursor-pointer border border-buttonborder text-blue-100 py-1 px-2 rounded scale-75"
                                         onClick={() => handleDelete(todo.id)}
                                         id={todo.id.toString()}
