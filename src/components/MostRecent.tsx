@@ -54,20 +54,20 @@ const MostRecent = () => {
                                 <div className="left_side flex items-center w-1/2">
                                     {todo.completed ? (
                                         <span
-                                            className="text-xs border border-buttonborder text-green-100 font-semibold py-1 px-2 rounded cursor-pointer truncate"
+                                            className="text-xs border border-buttonborder hover:bg-background transition-all duration-300 ease-in-out text-green-100 font-semibold py-1 px-2 rounded cursor-pointer truncate"
                                             onClick={() => handleToggle(todo.id)}
                                         >
                                             Completada
                                         </span>
                                     ) : (
                                         <span
-                                            className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate"
+                                            className="text-xs border border-buttonborder hover:bg-background transition-all duration-300 ease-in-out text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate"
                                             onClick={() => handleToggle(todo.id)}
                                         >
                                             Pendiente
                                         </span>
                                     )}
-                                <Tooltip className='sampletooltip' id={todo.id.toString()} />
+                                    <Tooltip className="sampletooltip" id={todo.id.toString()} />
                                 </div>
                                 <div className="right_side flex justify-end items-center w-1/2">
                                     <span

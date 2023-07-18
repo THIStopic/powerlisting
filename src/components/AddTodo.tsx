@@ -60,7 +60,7 @@ const AddTodo = () => {
         <>
             <h1 className="mb-4 font-medium">Añadir una tarea nueva</h1>
             <div className="container flex flex-col md:flex-row justify-between md:justify-between gap-8 md:gap-4 mb-4 md:mb-0">
-                <div className="left_side flex flex-col justify-between shadow-xl w-full md:w-2/3 gap-8 md:gap-4">
+                <div className="left_side flex flex-col justify-between shadow-xl w-full md:w-2/3 gap-8 md:gap-4 mb-4">
                     <div className="flex relative">
                         <input
                             type="text"
@@ -104,10 +104,16 @@ const AddTodo = () => {
                 </div>
             </div>
             <div className="button_container flex gap-4">
-                <button onClick={handleAddTodo} className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 transition-all duration-300 ease-in-out">
+                <button
+                    onClick={handleAddTodo}
+                    className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 hover:bg-neutral-900 transition-all duration-300 ease-in-out"
+                >
                     Añadir Tarea
                 </button>
-                <button onClick={handleClearTodos} className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 transition-all duration-300 ease-in-out">
+                <button
+                    onClick={handleClearTodos}
+                    className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 hover:bg-neutral-900 transition-all duration-300 ease-in-out"
+                >
                     Limpiar
                 </button>
             </div>
