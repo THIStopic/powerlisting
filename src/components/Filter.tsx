@@ -20,9 +20,24 @@ const Filter = () => {
         }, 300);
     };
 
+    const handleClearField = () => {
+        const inputField: any = document.getElementById('filterContent');
+        inputField.value = '';
+    };
+
     return (
-        <div>
-            <input type="text" autoCorrect='off' onChange={handleFilter} className="w-full outline-none bg-cards py-2 px-4 rounded form-input placeholder-slate-700" placeholder="Buscar..." />
+        <div className="relative">
+            <input
+                id="filterContent"
+                type="text"
+                spellCheck="false"
+                onChange={handleFilter}
+                className="w-full outline-none bg-cards py-2 px-4 rounded form-input placeholder-slate-700"
+                placeholder="Buscar..."
+            />
+            <span onClick={handleClearField} className="material-icons-round absolute top-2 right-2 text-slate-700 cursor-pointer">
+                clear
+            </span>
         </div>
     );
 };
