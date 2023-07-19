@@ -65,14 +65,14 @@ const MostRecent = () => {
                                 <div className="left_side flex items-center w-1/2">
                                     {todo.completed ? (
                                         <span
-                                            className="text-xs border border-slate-700 hover:bg-background transition-all duration-300 ease-in-out text-slate-700 font-semibold py-1 px-2 rounded cursor-pointer truncate"
+                                            className="text-xs hover:bg-background transition-all duration-300 ease-in-out text-orange-100 bg-background font-semibold py-1 px-2 rounded cursor-pointer truncate"
                                             onClick={() => handleToggle(todo.id)}
                                         >
                                             Completada
                                         </span>
                                     ) : (
                                         <span
-                                            className="text-xs border border-buttonborder hover:bg-background transition-all duration-300 ease-in-out text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate"
+                                            className="text-xs hover:bg-background transition-all duration-300 ease-in-out text-blue-100 bg-background font-semibold py-1 px-2 rounded cursor-pointer truncate"
                                             onClick={() => handleToggle(todo.id)}
                                         >
                                             Pendiente

@@ -125,7 +125,7 @@ const AddTodo = () => {
                             </span>
                         </div>
                         <div className="left_side flex justify-between">
-                            <span className="text-xs border border-buttonborder text-blue-100 font-semibold py-1 px-2 rounded cursor-pointer truncate">Pendiente</span>
+                            <span className="text-xs text-blue-100 bg-background font-semibold py-1 px-2 rounded cursor-pointer truncate">Pendiente</span>
                             <span className="text-xs self-end text-blue-100 font-semibold">Preview</span>
                         </div>
                     </div>
