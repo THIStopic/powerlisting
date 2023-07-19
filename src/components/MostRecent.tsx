@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTodo, deleteTodo } from '../store/features/todos';
+import { clearTodos, toggleTodo, deleteTodo } from '../store/features/todos';
 import { Tooltip } from 'react-tooltip';
 
 const MostRecent = () => {
@@ -19,14 +19,23 @@ const MostRecent = () => {
         dispatch(deleteTodo(id));
     };
 
+    const handleClearTodos = () => {
+        dispatch(clearTodos());
+    };
+
     useEffect(() => {
         parent.current && autoAnimate(parent.current);
     }, [parent]);
 
     return (
         <div>
+            <button
+                onClick={handleClearTodos}
+                className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 hover:bg-neutral-900 transition-all duration-300 ease-in-out"
+            >
+                Limpiar
+            </button>
             {todosToShow.length ? <h1 className="mb-4 flex justify-start font-medium">Todas las tareas:</h1> : <h1 className="mb-4 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>}
-
             <ul ref={parent} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todosToShow
                     .slice()
