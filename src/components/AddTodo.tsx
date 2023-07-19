@@ -42,15 +42,6 @@ const AddTodo = () => {
         }
     };
 
-    const handleClearTodos = () => {
-        setTaskValue('');
-        setDescriptionValue('');
-        const firstName = document.getElementById('form-input-first-name') as HTMLInputElement;
-        const description = document.getElementById('form-input-description') as HTMLInputElement;
-        firstName.value = '';
-        description.value = '';
-    };
-
     const taskLabelStyle = `absolute text-primarytext left-3 top-1.5 transition-all duration-300 ease-in-out text-sm pointer-events-none ${
         isTaskFocused || taskValue ? '-ml-2 px-2 transform -translate-y-4 text-sm text-primarytext' : 'text-slate-600'
     }`;
@@ -75,7 +66,7 @@ const AddTodo = () => {
                                 onBlur={handleTaskBlur}
                                 onChange={handleTaskChange}
                                 id="form-input-first-name"
-                                className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-500 outline-none"
+                                className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-700 outline-none"
                             />
                             <label className={taskLabelStyle}>Tarea</label>
                         </div>
@@ -93,10 +84,19 @@ const AddTodo = () => {
                             onFocus={handleDescriptionFocus}
                             onBlur={handleDescriptionBlur}
                             onChange={handleDescriptionChange}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    handleAddTodo();
+                                }
+                            }}
                             id="form-input-description"
-                            className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-500 resize-none outline-none"
+                            className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-700 resize-none outline-none"
                         />
                         <label className={descriptionLabelStyle}>Descripción</label>
+                        <button onClick={handleAddTodo} className="absolute bottom-0 right-1">
+                            <span className="material-icons-round text-slate-700 hover:text-slate-600 transition-all duration-200 ease-in-out p-1">send</span>
+                        </button>
                     </div>
                 </div>
                 <div className="right_side w-full md:w-1/3">
@@ -116,21 +116,6 @@ const AddTodo = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div className="button_container flex gap-4">
-                <button
-                    onClick={handleAddTodo}
-                    className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 hover:bg-neutral-900 transition-all duration-300 ease-in-out"
-                >
-                    Añadir Tarea
-                </button>
-                <button
-                    onClick={handleClearTodos}
-                    className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 hover:bg-neutral-900 transition-all duration-300 ease-in-out"
-                >
-                    Limpiar
-                </button>
             </div>
         </>
     );

@@ -1,7 +1,8 @@
 import { useRef, useEffect } from 'react';
 import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearTodos, toggleTodo, deleteTodo } from '../store/features/todos';
+import { toggleTodo, deleteTodo } from '../store/features/todos';
+import Filter from '../components/Filter';
 import { Tooltip } from 'react-tooltip';
 
 const MostRecent = () => {
@@ -19,9 +20,9 @@ const MostRecent = () => {
         dispatch(deleteTodo(id));
     };
 
-    const handleClearTodos = () => {
+    /* const handleClearTodos = () => {
         dispatch(clearTodos());
-    };
+    }; */
 
     useEffect(() => {
         parent.current && autoAnimate(parent.current);
@@ -29,14 +30,15 @@ const MostRecent = () => {
 
     return (
         <div>
-            <button
+            {/* <button
                 onClick={handleClearTodos}
                 className="my-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 hover:bg-neutral-900 transition-all duration-300 ease-in-out"
             >
                 Limpiar
-            </button>
-            {todosToShow.length ? <h1 className="mb-4 flex justify-start font-medium">Todas las tareas:</h1> : <h1 className="mb-4 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>}
-            <ul ref={parent} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            </button> */}
+            {todosToShow.length ? <h1 className="my-8 flex justify-start font-medium">Todas las tareas:</h1> : <h1 className="my-8 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>}
+            <Filter />
+            <ul ref={parent} className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todosToShow
                     .slice()
                     .reverse()
@@ -63,7 +65,7 @@ const MostRecent = () => {
                                 <div className="left_side flex items-center w-1/2">
                                     {todo.completed ? (
                                         <span
-                                            className="text-xs border border-buttonborder hover:bg-background transition-all duration-300 ease-in-out text-green-100 font-semibold py-1 px-2 rounded cursor-pointer truncate"
+                                            className="text-xs border border-slate-700 hover:bg-background transition-all duration-300 ease-in-out text-slate-700 font-semibold py-1 px-2 rounded cursor-pointer truncate"
                                             onClick={() => handleToggle(todo.id)}
                                         >
                                             Completada
@@ -83,11 +85,11 @@ const MostRecent = () => {
                                         data-tooltip-id={todo.id.toString()}
                                         data-tooltip-content="Eliminar"
                                         data-tooltip-place="left"
-                                        className="material-icons-round cursor-pointer border border-buttonborder text-blue-100 py-1 px-2 rounded scale-75"
+                                        className="material-icons-round cursor-pointer -mr-1 -mb-1 text-slate-700 rounded"
                                         onClick={() => handleDelete(todo.id)}
                                         id={todo.id.toString()}
                                     >
-                                        delete_outline
+                                        highlight_off
                                     </span>
                                 </div>
                             </div>
