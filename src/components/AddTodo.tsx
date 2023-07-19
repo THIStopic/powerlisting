@@ -74,6 +74,10 @@ const AddTodo = () => {
                             portalId="root"
                             selected={selectedDate}
                             onChange={(date: Date) => setSelectedDate(date)}
+                            shouldCloseOnSelect={false}
+                            preventOpenOnFocus={true}
+                            shouldCloseOnEsc={true}
+                            shouldCloseOnOutsideClick={true}
                             dateFormat="dd/MM/yyyy"
                             className="flex justify-center items-center w-full md:w-96 bg-cards rounded-lg shadow-xl px-3 py-4 text-sm text-slate-500 outline-none"
                         />
