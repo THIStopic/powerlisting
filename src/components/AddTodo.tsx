@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addTodo } from '../store/features/todos';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const AddTodo = () => {
     const [isTaskFocused, setIsTaskFocused] = useState(false);
@@ -8,6 +10,7 @@ const AddTodo = () => {
     const [taskValue, setTaskValue] = useState('');
     const [descriptionValue, setDescriptionValue] = useState('');
     const todos = useSelector((state: any) => state.todos.todos);
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleTaskFocus = () => setIsTaskFocused(true);
     const handleTaskBlur = () => setIsTaskFocused(false);
@@ -26,7 +29,7 @@ const AddTodo = () => {
                     id: todos.length + 1,
                     title: taskValue,
                     description: descriptionValue,
-                    date: new Date().toLocaleDateString(),
+                    date: selectedDate.toLocaleDateString(undefined, { month: '2-digit', day: '2-digit', year: 'numeric' }),
                     completed: false,
                 })
             );
@@ -56,22 +59,33 @@ const AddTodo = () => {
         isDescriptionFocused || descriptionValue ? '-ml-2 px-2 transform -translate-y-4 text-sm' : 'text-slate-600'
     }`;
 
+    useEffect(() => {}, [selectedDate]);
+
     return (
         <>
             <h1 className="mb-4 font-medium">Añadir una tarea nueva</h1>
             <div className="container flex flex-col md:flex-row justify-between md:justify-between gap-8 md:gap-4 mb-4 md:mb-0">
                 <div className="left_side flex flex-col justify-between shadow-xl w-full md:w-2/3 gap-8 md:gap-4 mb-4">
-                    <div className="flex relative">
-                        <input
-                            type="text"
-                            spellCheck="false"
-                            onFocus={handleTaskFocus}
-                            onBlur={handleTaskBlur}
-                            onChange={handleTaskChange}
-                            id="form-input-first-name"
-                            className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-500 outline-none"
+                    <div className="flex gap-4 items-center w-full">
+                        <div className="flex w-full relative">
+                            <input
+                                type="text"
+                                spellCheck="false"
+                                onFocus={handleTaskFocus}
+                                onBlur={handleTaskBlur}
+                                onChange={handleTaskChange}
+                                id="form-input-first-name"
+                                className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-500 outline-none"
+                            />
+                            <label className={taskLabelStyle}>Tarea</label>
+                        </div>
+                        <DatePicker
+                            portalId="root"
+                            selected={selectedDate}
+                            onChange={(date: Date) => setSelectedDate(date)}
+                            dateFormat="dd/MM/yyyy"
+                            className="flex justify-center items-center w-full md:w-96 bg-cards rounded-lg shadow-xl px-3 py-4 text-sm text-slate-500 outline-none"
                         />
-                        <label className={taskLabelStyle}>Tarea</label>
                     </div>
                     <div className="flex relative">
                         <textarea
@@ -91,9 +105,9 @@ const AddTodo = () => {
                             <span className="text-base font-medium w-full truncate">{taskValue == '' ? 'Titulo de la tarea.' : taskValue}</span>
                             <span className="text-sm w-full truncate">{descriptionValue == '' ? 'Descripción de la tarea.' : descriptionValue}</span>
                             <span className="text-sm w-full truncate">
-                                {taskValue === '' && descriptionValue === ''
+                                {taskValue === '' && descriptionValue === '' && selectedDate === new Date()
                                     ? new Date(0).toLocaleDateString(undefined, { day: '2-digit', month: '2-digit', year: 'numeric' })
-                                    : new Date().toLocaleDateString(undefined, { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                                    : selectedDate.toLocaleDateString(undefined, { month: '2-digit', day: '2-digit', year: 'numeric' })}
                             </span>
                         </div>
                         <div className="left_side flex justify-between">
@@ -103,6 +117,7 @@ const AddTodo = () => {
                     </div>
                 </div>
             </div>
+
             <div className="button_container flex gap-4">
                 <button
                     onClick={handleAddTodo}

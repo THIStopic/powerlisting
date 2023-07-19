@@ -31,7 +31,7 @@ const MostRecent = () => {
         <div>
             <button
                 onClick={handleClearTodos}
-                className="mt-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 hover:bg-neutral-900 transition-all duration-300 ease-in-out"
+                className="my-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 hover:bg-neutral-900 transition-all duration-300 ease-in-out"
             >
                 Limpiar
             </button>

@@ -77,7 +77,6 @@ const todosSlice = createSlice({
         // Aquí definimos las acciones que modificarán el estado de los TODO.
         addTodo: (state, action) => {
             state.todos.push(action.payload);
-            date: formatDate(new Date());
         },
         toggleTodo: (state, action) => {
             const todo = state.todos.find((todo) => todo.id === action.payload);
