@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addTodo } from '../store/features/todos';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Tooltip } from 'react-tooltip';
 
 const AddTodo = () => {
     const [isTaskFocused, setIsTaskFocused] = useState(false);
@@ -98,8 +99,17 @@ const AddTodo = () => {
                             className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-700 resize-none outline-none"
                         />
                         <label className={descriptionLabelStyle}>Descripción</label>
+                        <Tooltip className="sampletooltip2" id="ejemplo" />
                         <button onClick={handleAddTodo} className="absolute bottom-0 right-1">
-                            <span className="material-icons-round text-slate-700 hover:text-slate-600 transition-all duration-200 ease-in-out p-1">send</span>
+                            <span
+                                key="ejemplo"
+                                data-tooltip-id="ejemplo"
+                                data-tooltip-content="Enviar"
+                                data-tooltip-place="bottom-end"
+                                className="material-icons-round text-slate-700 hover:text-slate-600 transition-all duration-200 ease-in-out px-1"
+                            >
+                                send
+                            </span>
                         </button>
                     </div>
                 </div>

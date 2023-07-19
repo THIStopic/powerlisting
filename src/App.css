@@ -10,10 +10,17 @@
     background-color: #222327 !important;
 }
 
+.sampletooltip2 {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.75rem !important;
+    background-color: #131314 !important;
+}
+
 .react-datepicker {
     border: none !important;
     color: #fff !important;
     font-family: 'Poppins', sans-serif !important;
+    box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.300) !important;
 }
 
 .react-datepicker__current-month,
@@ -33,7 +40,13 @@
 }
 
 .react-datepicker__header {
+    border-radius: 1rem 5rem 0 0 !important;
     border-bottom: 1px solid #222327 !important;
+}
+
+.react-datepicker,
+.react-datepicker__month-container {
+    border-radius: 0.7rem !important;
 }
 
 .react-datepicker,
