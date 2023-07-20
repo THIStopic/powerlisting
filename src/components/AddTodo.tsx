@@ -1,25 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addTodo } from '../store/features/todos';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Tooltip } from 'react-tooltip';
+import FloatingLabelInput from './FloatingLabelInput';
 
 const AddTodo = () => {
-    const [isTaskFocused, setIsTaskFocused] = useState(false);
-    const [isDescriptionFocused, setIsDescriptionFocused] = useState(false);
     const [taskValue, setTaskValue] = useState('');
     const [descriptionValue, setDescriptionValue] = useState('');
     const todos = useSelector((state: any) => state.todos.todos);
     const [selectedDate, setSelectedDate] = useState(new Date());
-
-    const handleTaskFocus = () => setIsTaskFocused(true);
-    const handleTaskBlur = () => setIsTaskFocused(false);
-    const handleTaskChange = (e: any) => setTaskValue(e.target.value);
-
-    const handleDescriptionFocus = () => setIsDescriptionFocused(true);
-    const handleDescriptionBlur = () => setIsDescriptionFocused(false);
-    const handleDescriptionChange = (e: any) => setDescriptionValue(e.target.value);
 
     const dispatch = useDispatch();
 
@@ -36,22 +27,8 @@ const AddTodo = () => {
             );
             setTaskValue('');
             setDescriptionValue('');
-            const firstName = document.getElementById('form-input-first-name') as HTMLInputElement;
-            const description = document.getElementById('form-input-description') as HTMLInputElement;
-            firstName.value = '';
-            description.value = '';
         }
     };
-
-    const taskLabelStyle = `absolute text-primarytext left-3 top-1.5 transition-all duration-300 ease-in-out text-sm pointer-events-none ${
-        isTaskFocused || taskValue ? '-ml-2 px-2 transform -translate-y-4 text-sm text-primarytext' : 'text-slate-600'
-    }`;
-
-    const descriptionLabelStyle = `absolute text-primarytext left-3 top-1.5 transition-all duration-300 ease-in-out text-sm pointer-events-none ${
-        isDescriptionFocused || descriptionValue ? '-ml-2 px-2 transform -translate-y-4 text-sm' : 'text-slate-600'
-    }`;
-
-    useEffect(() => {}, [selectedDate]);
 
     return (
         <>
@@ -59,18 +36,7 @@ const AddTodo = () => {
             <div className="container flex flex-col md:flex-row justify-between md:justify-between gap-8 md:gap-4 mb-4 md:mb-0">
                 <div className="left_side flex flex-col justify-between shadow-xl w-full md:w-2/3 gap-8 md:gap-4 mb-4">
                     <div className="flex gap-4 items-center w-full">
-                        <div className="flex w-full relative">
-                            <input
-                                type="text"
-                                spellCheck="false"
-                                onFocus={handleTaskFocus}
-                                onBlur={handleTaskBlur}
-                                onChange={handleTaskChange}
-                                id="form-input-first-name"
-                                className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-700 outline-none"
-                            />
-                            <label className={taskLabelStyle}>Tarea</label>
-                        </div>
+                        <FloatingLabelInput id="form-input-task" label="Tarea" value={taskValue} onChange={setTaskValue} />
                         <DatePicker
                             portalId="root"
                             selected={selectedDate}
@@ -84,21 +50,13 @@ const AddTodo = () => {
                         />
                     </div>
                     <div className="flex relative">
-                        <textarea
-                            spellCheck="false"
-                            onFocus={handleDescriptionFocus}
-                            onBlur={handleDescriptionBlur}
-                            onChange={handleDescriptionChange}
-                            onKeyDown={(e) => {
-                                if (e.key === 'Enter') {
-                                    e.preventDefault();
-                                    handleAddTodo();
-                                }
-                            }}
+                        <FloatingLabelInput
                             id="form-input-description"
-                            className="bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-700 resize-none outline-none"
+                            label="Descripción"
+                            value={descriptionValue}
+                            onChange={setDescriptionValue}
+                            inputStyle="bg-cards rounded-lg px-3 py-6 w-full text-sm text-slate-700 resize-none outline-none"
                         />
-                        <label className={descriptionLabelStyle}>Descripción</label>
                         <Tooltip className="sampletooltip2" id="ejemplo" />
                         <button onClick={handleAddTodo} className="absolute bottom-0 right-1">
                             <span
