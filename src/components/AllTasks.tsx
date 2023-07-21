@@ -2,10 +2,10 @@ import { useRef, useEffect } from 'react';
 import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTodo, deleteTodo } from '../store/features/todos';
-import Filter from '../components/Filter';
+import Filter from './Filter';
 import { Tooltip } from 'react-tooltip';
 
-const MostRecent = () => {
+const AllTasks = () => {
     const todos = useSelector((state: any) => state.todos.todos);
     const filteredTodos = useSelector((state: any) => state.todos.filteredTodos);
     const todosToShow = filteredTodos.length > 0 ? filteredTodos : todos;
@@ -20,22 +20,12 @@ const MostRecent = () => {
         dispatch(deleteTodo(id));
     };
 
-    /* const handleClearTodos = () => {
-        dispatch(clearTodos());
-    }; */
-
     useEffect(() => {
         parent.current && autoAnimate(parent.current);
-    }, [parent]);
+    }, []);
 
     return (
         <div>
-            {/* <button
-                onClick={handleClearTodos}
-                className="my-4 w-40 text-sm border border-buttonborder text-blue-100 font-semibold rounded px-4 py-1 hover:bg-neutral-900 transition-all duration-300 ease-in-out"
-            >
-                Limpiar
-            </button> */}
             {todosToShow.length ? <h1 className="my-8 flex justify-start font-medium">Todas las tareas:</h1> : <h1 className="my-8 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>}
             <Filter />
             <ul ref={parent} className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -85,11 +75,11 @@ const MostRecent = () => {
                                         data-tooltip-id={todo.id.toString()}
                                         data-tooltip-content="Eliminar"
                                         data-tooltip-place="left"
-                                        className="material-icons-round cursor-pointer -mr-1 -mb-1 text-slate-700 rounded"
+                                        className="material-icons-round cursor-pointer -mr-1 -mb-1 text-background rounded"
                                         onClick={() => handleDelete(todo.id)}
                                         id={todo.id.toString()}
                                     >
-                                        highlight_off
+                                        delete
                                     </span>
                                 </div>
                             </div>
@@ -100,4 +90,4 @@ const MostRecent = () => {
     );
 };
 
-export default MostRecent;
+export default AllTasks;

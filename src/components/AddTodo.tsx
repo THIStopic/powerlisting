@@ -64,7 +64,7 @@ const AddTodo = () => {
                                 data-tooltip-id="ejemplo"
                                 data-tooltip-content="Enviar"
                                 data-tooltip-place="bottom-end"
-                                className="material-icons-round text-slate-700 hover:text-slate-600 transition-all duration-200 ease-in-out px-1"
+                                className="material-icons-round text-background hover:text-slate-600 transition-all duration-200 ease-in-out px-1"
                             >
                                 send
                             </span>
