@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTodo } from '../store/features/todos';
+import { addTodo, filterTodos } from '../store/features/todos';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Tooltip } from 'react-tooltip';
@@ -25,6 +25,7 @@ const AddTodo = () => {
                     completed: false,
                 })
             );
+            dispatch(filterTodos([]));
             setTaskValue('');
             setDescriptionValue('');
         }

@@ -69,7 +69,6 @@ const initialState: TodosState = {
     filteredTodos: [],
 };
 
-
 const todosSlice = createSlice({
     name: 'todos',
     initialState,
@@ -77,6 +76,11 @@ const todosSlice = createSlice({
         // Aquí definimos las acciones que modificarán el estado de los TODO.
         addTodo: (state, action) => {
             state.todos.push(action.payload);
+            state.todos.sort((a, b) => b.id - a.id);
+        },
+        deleteTodo: (state, action) => {
+            state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+            state.todos.sort((a, b) => b.id - a.id)
         },
         toggleTodo: (state, action) => {
             const todo = state.todos.find((todo) => todo.id === action.payload);
@@ -84,11 +88,9 @@ const todosSlice = createSlice({
                 todo.completed = !todo.completed;
             }
         },
-        deleteTodo: (state, action) => {
-            state.todos = state.todos.filter((todo) => todo.id !== action.payload);
-        },
         filterTodos: (state, action) => {
             state.filteredTodos = [...action.payload];
+            state.filteredTodos.sort((a, b) => b.id - a.id);
         },
         clearTodos: (state) => {
             state.todos = state.todos.filter((todo) => !todo.completed);
