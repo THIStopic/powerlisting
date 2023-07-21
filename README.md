@@ -4,9 +4,9 @@ TodoTS es una aplicación web de lista de tareas hecha con React, TypeScript y V
 
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 <!-- ![TodoTS logo](logo.png) -->
 
 ## Instalación
@@ -37,3 +37,6 @@ TodoTS está hecho con las siguientes tecnologías y librerías:
 - [Vite](https://vitejs.dev/): Una herramienta de desarrollo web moderna y rápida.
 - [Tailwind CSS](https://tailwindcss.com/): Un framework de CSS que te permite crear diseños personalizados sin salir del HTML.
 - [Redux](https://es.redux.js.org/): Una biblioteca de JavaScript para el manejo del estado de la aplicación.
+- [AutoAnimate](https://auto-animate.formkit.com/): Una librería de animaciones para React.
+- [React Tooltip](https://www.npmjs.com/package/react-tooltip): Una librería de tooltips para React.
+- [React Datepicker](https://reactdatepicker.com/): Una librería de datepickers para React.
