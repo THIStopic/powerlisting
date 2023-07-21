@@ -35,39 +35,22 @@ const AllTasks = () => {
                     .map((todo: any) => (
                         <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
                             <div className="flex flex-col items-start truncate">
-                                {todo.completed ? (
-                                    <span className="text-base font-medium text-slate-600 line-through transition-all duration-200 ease-in-out truncate">{todo.title}</span>
-                                ) : (
-                                    <span className="text-base font-medium w-full transition-all duration-200 ease-in-out truncate">{todo.title}</span>
-                                )}
-                                {todo.completed ? (
-                                    <span className="text-sm w-full truncate text-slate-600 transition-all duration-200 ease-in-out ">{todo.description}</span>
-                                ) : (
-                                    <span className="text-sm w-full transition-all duration-200 ease-in-out truncate">{todo.description}</span>
-                                )}
-                                {todo.completed ? (
-                                    <span className="text-sm w-full truncate text-slate-600 transition-all duration-200 ease-in-out">{todo.date}</span>
-                                ) : (
-                                    <span className="text-sm w-full transition-all duration-200 ease-in-out truncate">{todo.date}</span>
-                                )}
+                                <span className={`text-base font-medium ${todo.completed ? 'text-slate-600 line-through' : 'w-full'} transition-all duration-200 ease-in-out truncate`}>
+                                    {todo.title}
+                                </span>
+                                <span className={`text-sm w-full truncate ${todo.completed ? 'text-slate-600' : ''} transition-all duration-200 ease-in-out`}>{todo.description}</span>
+                                <span className={`text-sm w-full truncate ${todo.completed ? 'text-slate-600' : ''} transition-all duration-200 ease-in-out`}>{todo.date}</span>
                             </div>
                             <div className="flex items-center justify-start">
                                 <div className="left_side flex items-center w-1/2">
-                                    {todo.completed ? (
-                                        <span
-                                            className="text-xs hover:bg-background transition-all duration-300 ease-in-out text-orange-100 bg-background font-semibold py-1 px-2 rounded cursor-pointer truncate"
-                                            onClick={() => handleToggle(todo.id)}
-                                        >
-                                            Completada
-                                        </span>
-                                    ) : (
-                                        <span
-                                            className="text-xs hover:bg-background transition-all duration-300 ease-in-out text-blue-100 bg-background font-semibold py-1 px-2 rounded cursor-pointer truncate"
-                                            onClick={() => handleToggle(todo.id)}
-                                        >
-                                            Pendiente
-                                        </span>
-                                    )}
+                                    <span
+                                        className={`text-xs hover:bg-background transition-all duration-300 ease-in-out ${
+                                            todo.completed ? 'text-orange-100' : 'text-blue-100'
+                                        } bg-background font-semibold py-1 px-2 rounded cursor-pointer truncate`}
+                                        onClick={() => handleToggle(todo.id)}
+                                    >
+                                        {todo.completed ? 'Completada' : 'Pendiente'}
+                                    </span>
                                     <Tooltip className="sampletooltip" id={todo.id.toString()} />
                                 </div>
                                 <div className="right_side flex justify-end items-center w-1/2">
