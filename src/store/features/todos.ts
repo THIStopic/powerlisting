@@ -80,7 +80,7 @@ const todosSlice = createSlice({
         },
         deleteTodo: (state, action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload);
-            state.todos.sort((a, b) => b.id - a.id)
+            state.todos.sort((a, b) => b.id - a.id);
         },
         toggleTodo: (state, action) => {
             const todo = state.todos.find((todo) => todo.id === action.payload);
@@ -92,6 +92,17 @@ const todosSlice = createSlice({
             state.filteredTodos = [...action.payload];
             state.filteredTodos.sort((a, b) => b.id - a.id);
         },
+        reverseOrder: (state) => {
+            state.todos.reverse();
+        },
+        // Esta función ordena los TODO por fecha de forma descendente (del más reciente al más antiguo).
+        /* sortTodos: (state) => {
+            state.todos.sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                return dateB.getTime() - dateA.getTime();
+            });
+        }, */
         clearTodos: (state) => {
             state.todos = state.todos.filter((todo) => !todo.completed);
         },
@@ -99,7 +110,7 @@ const todosSlice = createSlice({
 });
 
 // Se exportan las acciones creadas por createSlice para poder usarlas en los componentes.
-export const { addTodo, toggleTodo, deleteTodo, filterTodos, clearTodos } = todosSlice.actions;
+export const { addTodo, toggleTodo, deleteTodo, reverseOrder, sortTodos, filterTodos, clearTodos } = todosSlice.actions;
 
 // Se exporta al reducer para poder añadirlo al store.
 export default todosSlice.reducer;

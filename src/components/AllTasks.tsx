@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTodo, deleteTodo } from '../store/features/todos';
+import { toggleTodo, deleteTodo, reverseOrder } from '../store/features/todos';
 import Filter from './Filter';
 import { Tooltip } from 'react-tooltip';
 
@@ -20,6 +20,10 @@ const AllTasks = () => {
         dispatch(deleteTodo(id));
     };
 
+    const handleSorting = () => {
+        dispatch(reverseOrder());
+    };
+
     useEffect(() => {
         parent.current && autoAnimate(parent.current);
     }, []);
@@ -28,6 +32,9 @@ const AllTasks = () => {
         <div>
             {todosToShow.length ? <h1 className="my-8 flex justify-start font-medium">Todas las tareas:</h1> : <h1 className="my-8 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>}
             <Filter />
+            <button onClick={handleSorting}>
+                <span className="material-icons-round bg-cards py-1 px-2 rounded text-primarytext mt-4">sort</span>
+            </button>
             <ul ref={parent} className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todosToShow.map((todo: any) => (
                     <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
