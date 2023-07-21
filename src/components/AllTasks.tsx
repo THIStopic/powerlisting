@@ -32,9 +32,11 @@ const AllTasks = () => {
         <div>
             {todosToShow.length ? <h1 className="my-8 flex justify-start font-medium">Todas las tareas:</h1> : <h1 className="my-8 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>}
             <Filter />
-            <button onClick={handleSorting}>
-                <span className="material-icons-round bg-cards py-1 px-2 rounded text-primarytext mt-4">sort</span>
-            </button>
+            <div className="actions flex gap-2">
+                <button onClick={handleSorting} aria-label="Ordenar" className="material-icons-round bg-cards py-1 px-2 rounded text-primarytext mt-4 cursor-pointer">
+                    sort
+                </button>
+            </div>
             <ul ref={parent} className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todosToShow.map((todo: any) => (
                     <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
@@ -45,18 +47,18 @@ const AllTasks = () => {
                         </div>
                         <div className="flex items-center justify-start">
                             <div className="left_side flex items-center w-1/2">
-                                <span
+                                <button
                                     className={`text-xs hover:bg-background transition-all duration-300 ease-in-out ${
                                         todo.completed ? 'text-orange-100' : 'text-blue-100'
                                     } bg-background font-semibold py-1 px-2 rounded cursor-pointer truncate`}
                                     onClick={() => handleToggle(todo.id)}
                                 >
                                     {todo.completed ? 'Completada' : 'Pendiente'}
-                                </span>
+                                </button>
                                 <Tooltip className="sampletooltip" id={todo.id.toString()} />
                             </div>
                             <div className="right_side flex justify-end items-center w-1/2">
-                                <span
+                                <button
                                     data-tooltip-id={todo.id.toString()}
                                     data-tooltip-content="Eliminar"
                                     data-tooltip-place="left"
@@ -65,7 +67,7 @@ const AllTasks = () => {
                                     id={todo.id.toString()}
                                 >
                                     delete
-                                </span>
+                                </button>
                             </div>
                         </div>
                     </li>

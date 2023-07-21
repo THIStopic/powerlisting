@@ -56,7 +56,7 @@ const AddTodo = () => {
                             label="Descripción"
                             value={descriptionValue}
                             onChange={setDescriptionValue}
-                            inputStyle="bg-cards rounded-lg px-3 py-6 w-full text-sm text-slate-700 resize-none outline-none"
+                            inputStyle="bg-cards rounded-lg px-3 py-5 w-full text-sm text-slate-700 resize-none outline-none"
                         />
                         <Tooltip className="sampletooltip2" id="ejemplo" />
                         <button onClick={handleAddTodo} className="absolute bottom-0 right-1">
@@ -76,8 +76,8 @@ const AddTodo = () => {
                     <div className="flex flex-col gap-4 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
                         <div className="flex flex-col items-start truncate">
                             <span className="text-base font-medium w-full truncate">{taskValue == '' ? 'Titulo de la tarea.' : taskValue}</span>
-                            <span className="text-sm w-full truncate">{descriptionValue == '' ? 'Descripción de la tarea.' : descriptionValue}</span>
-                            <span className="text-sm w-full truncate">
+                            <span className="text-xs w-full truncate">{descriptionValue == '' ? 'Descripción de la tarea.' : descriptionValue}</span>
+                            <span className="text-xs w-full truncate">
                                 {taskValue === '' && descriptionValue === '' && selectedDate === new Date()
                                     ? new Date(0).toLocaleDateString(undefined, { day: '2-digit', month: '2-digit', year: 'numeric' })
                                     : selectedDate.toLocaleDateString(undefined, { month: '2-digit', day: '2-digit', year: 'numeric' })}
