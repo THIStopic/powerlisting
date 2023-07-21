@@ -4,15 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.sampletooltip {
+.sampletooltip,
+.sampletooltip2 {
     padding: 0.5rem 1rem !important;
     font-size: 0.75rem !important;
+}
+
+.sampletooltip {
     background-color: #222327 !important;
 }
 
 .sampletooltip2 {
-    padding: 0.5rem 1rem !important;
-    font-size: 0.75rem !important;
     background-color: #131314 !important;
 }
 
@@ -20,7 +22,7 @@
     border: none !important;
     color: #fff !important;
     font-family: 'Poppins', sans-serif !important;
-    box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.300) !important;
+    box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.3) !important;
 }
 
 .react-datepicker__current-month,
@@ -29,7 +31,11 @@
     font-weight: bold;
 }
 
-.react-datepicker__day--selected, .react-datepicker__day--keyboard-selected, .react-datepicker__month-text--keyboard-selected, .react-datepicker__quarter-text--keyboard-selected, .react-datepicker__year-text--keyboard-selected {
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__quarter-text--keyboard-selected,
+.react-datepicker__year-text--keyboard-selected {
     background-color: #222327 !important;
     color: #fff !important;
 }
@@ -68,6 +74,7 @@
     display: none !important;
 }
 
-.react-datepicker__navigation-icon--previous, .react-datepicker__navigation-icon--next {
+.react-datepicker__navigation-icon--previous,
+.react-datepicker__navigation-icon--next {
     margin-top: 0.7rem !important;
 }

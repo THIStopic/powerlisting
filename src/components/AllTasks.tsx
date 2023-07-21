@@ -1,9 +1,10 @@
 import { useRef, useEffect } from 'react';
 import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTodo, deleteTodo, reverseOrder } from '../store/features/todos';
-import Filter from './Filter';
+import { toggleTodo, deleteTodo } from '../store/features/todos';
 import { Tooltip } from 'react-tooltip';
+import Filter from './Filter';
+import Actions from './Actions';
 
 const AllTasks = () => {
     const todos = useSelector((state: any) => state.todos.todos);
@@ -20,10 +21,6 @@ const AllTasks = () => {
         dispatch(deleteTodo(id));
     };
 
-    const handleSorting = () => {
-        dispatch(reverseOrder());
-    };
-
     useEffect(() => {
         parent.current && autoAnimate(parent.current);
     }, []);
@@ -32,11 +29,7 @@ const AllTasks = () => {
         <div>
             {todosToShow.length ? <h1 className="my-8 flex justify-start font-medium">Todas las tareas:</h1> : <h1 className="my-8 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>}
             <Filter />
-            <div className="actions flex gap-2">
-                <button onClick={handleSorting} aria-label="Ordenar" className="material-icons-round bg-cards py-1 px-2 rounded text-primarytext mt-4 cursor-pointer">
-                    sort
-                </button>
-            </div>
+            <Actions />
             <ul ref={parent} className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todosToShow.map((todo: any) => (
                     <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
