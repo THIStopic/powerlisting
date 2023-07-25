@@ -74,6 +74,9 @@ const todosSlice = createSlice({
     initialState,
     reducers: {
         // Aquí definimos las acciones que modificarán el estado de los TODO.
+        initializeTodos: (state, action) => {
+            state.todos = action.payload;
+        },
         addTodo: (state, action) => {
             state.todos.push(action.payload);
             state.todos.sort((a, b) => b.id - a.id);
@@ -110,7 +113,7 @@ const todosSlice = createSlice({
 });
 
 // Se exportan las acciones creadas por createSlice para poder usarlas en los componentes.
-export const { addTodo, toggleTodo, deleteTodo, reverseOrder, sortTodos, filterTodos, clearTodos } = todosSlice.actions;
+export const { addTodo, toggleTodo, deleteTodo, reverseOrder, initializeTodos, filterTodos, clearTodos } = todosSlice.actions;
 
 // Se exporta al reducer para poder añadirlo al store.
 export default todosSlice.reducer;

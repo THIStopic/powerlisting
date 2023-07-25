@@ -1,16 +1,16 @@
 import { useRef, useEffect } from 'react';
 import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTodo, deleteTodo } from '../store/features/todos';
+import { initializeTodos, toggleTodo, deleteTodo } from '../store/features/todos';
 import { Tooltip } from 'react-tooltip';
 import Filter from './Filter';
 import Actions from './Actions';
 
 const AllTasks = () => {
+    const dispatch = useDispatch();
     const todos = useSelector((state: any) => state.todos.todos);
     const filteredTodos = useSelector((state: any) => state.todos.filteredTodos);
     const todosToShow = filteredTodos.length > 0 ? filteredTodos : todos;
-    const dispatch = useDispatch();
     const parent = useRef<HTMLUListElement>(null);
 
     const handleToggle = (id: number) => {
@@ -21,9 +21,19 @@ const AllTasks = () => {
         dispatch(deleteTodo(id));
     };
 
+    // Primero, inicializamos los todos desde sessionStorage cuando el componente se monta
     useEffect(() => {
+        const oldTodos = JSON.parse(sessionStorage.getItem('todos') || '[]');
+        if (oldTodos.length > 0) {
+            dispatch(initializeTodos(oldTodos));
+        }
+    }, [dispatch]); // Nota: solo depende de dispatch, que no cambiará
+
+    // Luego, actualizamos la sessionStorage cada vez que los todos cambian
+    useEffect(() => {
+        sessionStorage.setItem('todos', JSON.stringify(todos));
         parent.current && autoAnimate(parent.current);
-    }, []);
+    }, [todos]);
 
     return (
         <div>
