@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
-import { initializeTodos, toggleTodo, deleteTodo } from '../store/features/todos';
+import { initializeTodos, toggleTodo, pinToggle, deleteTodo } from '../store/features/todos';
 import { Tooltip } from 'react-tooltip';
 import Filter from './Filter';
 import Actions from './Actions';
@@ -19,6 +19,10 @@ const AllTasks = () => {
 
     const handleDelete = (id: number) => {
         dispatch(deleteTodo(id));
+    };
+
+    const togglePin = (id: number) => {
+        dispatch(pinToggle(id));
     };
 
     // Primero, inicializamos los todos desde sessionStorage cuando el componente se monta
@@ -47,8 +51,19 @@ const AllTasks = () => {
             <ul ref={parent} className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todosToShow.map((todo: any) => (
                     <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
-                        <div className="flex flex-col items-start truncate">
+                        <div className="flex justify-between items-start truncate">
                             <span className={`text-base font-medium ${todo.completed ? 'text-slate-600 line-through' : 'w-full'} transition-all duration-200 ease-in-out truncate`}>{todo.title}</span>
+                            {todo.completed ? (
+                                <button className="material-icons-round scale-75 -mr-1 rotate-45 text-background" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
+                                    push_pin
+                                </button>
+                            ) : (
+                                <button className="material-icons-round scale-75 -mr-1 rotate-45" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
+                                    push_pin
+                                </button>
+                            )}
+                        </div>
+                        <div className="flex flex-col items-start truncate">
                             <span className={`text-xs w-full truncate ${todo.completed ? 'text-slate-600' : ''} transition-all duration-200 ease-in-out`}>{todo.description}</span>
                             <span className={`text-xs w-full truncate ${todo.completed ? 'text-slate-600' : ''} transition-all duration-200 ease-in-out`}>{todo.date}</span>
                         </div>
@@ -57,7 +72,7 @@ const AllTasks = () => {
                                 <button
                                     className={`text-xs hover:bg-background transition-all duration-300 ease-in-out ${
                                         todo.completed ? 'text-orange-100' : 'text-blue-100'
-                                    } bg-background font-semibold py-1 px-2 rounded cursor-pointer truncate`}
+                                    } bg-background font-semibold py-1 px-2 rounded truncate`}
                                     onClick={() => handleToggle(todo.id)}
                                 >
                                     {todo.completed ? 'Completada' : 'Pendiente'}
@@ -65,16 +80,29 @@ const AllTasks = () => {
                                 <Tooltip className="sampletooltip" id={todo.id.toString()} />
                             </div>
                             <div className="right_side flex justify-end items-center w-1/2">
-                                <button
-                                    data-tooltip-id={todo.id.toString()}
-                                    data-tooltip-content="Eliminar"
-                                    data-tooltip-place="left"
-                                    className="material-icons-round cursor-pointer -mr-1 -mb-1 text-background rounded"
-                                    onClick={() => handleDelete(todo.id)}
-                                    id={todo.id.toString()}
-                                >
-                                    delete
-                                </button>
+                                {todo.completed ? (
+                                    <button
+                                        data-tooltip-id={`${todo.id}-delete`}
+                                        data-tooltip-content="Eliminar"
+                                        data-tooltip-place="left"
+                                        className="material-icons-round scale-75 -mr-1 -mb-1 text-background"
+                                        onClick={() => handleDelete(todo.id)}
+                                        id={`${todo.id}-delete`}
+                                    >
+                                        delete
+                                    </button>
+                                ) : (
+                                    <button
+                                        data-tooltip-id={`${todo.id}-delete`}
+                                        data-tooltip-content="Eliminar"
+                                        data-tooltip-place="left"
+                                        className="material-icons-round scale-75 -mr-1 -mb-1"
+                                        onClick={() => handleDelete(todo.id)}
+                                        id={`${todo.id}-delete`}
+                                    >
+                                        delete
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </li>
