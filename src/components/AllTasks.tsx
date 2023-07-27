@@ -37,7 +37,11 @@ const AllTasks = () => {
 
     return (
         <div>
-            {todosToShow.length ? <h1 className="mt-8 mb-4 flex justify-start font-medium">Todas las tareas:</h1> : <h1 className="my-8 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>}
+            {todosToShow.length ? (
+                <h1 className="mt-8 mb-4 flex justify-start font-medium">Todas las tareas:</h1>
+            ) : (
+                <h1 className="my-8 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>
+            )}
             <Filter />
             <Actions />
             <ul ref={parent} className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
