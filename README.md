@@ -1,6 +1,6 @@
 # PowerListing
 
-TodoTS es una aplicación web de lista de tareas hecha con React, TypeScript y Vite. Te permite crear, editar y eliminar tareas de forma rápida y sencilla. También puedes filtrar y ordenar tus tareas por prioridad, fecha o estado.
+PowerListing es una aplicación web de lista de tareas hecha con React, TypeScript y Vite. Te permite crear, editar y eliminar tareas de forma rápida y sencilla. También puedes filtrar y ordenar tus tareas por prioridad, fecha o estado.
 
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
@@ -11,16 +11,16 @@ TodoTS es una aplicación web de lista de tareas hecha con React, TypeScript y V
 
 ## Instalación
 
-Para instalar TodoTS, necesitas tener Node.js instalado en tu máquina. Luego, sigue estos pasos:
+Para instalar PowerListing, necesitas tener Node.js instalado en tu máquina. Luego, sigue estos pasos:
 
-1. Clona este repositorio en tu directorio local: `git clone https://github.com/example/TodoTS.git`
+1. Clona este repositorio en tu directorio local: `git clone https://github.com/example/PowerListing.git`
 2. Ejecuta el comando `npm install` para instalar las dependencias del proyecto.
 3. Ejecuta el comando `npm run dev` para iniciar el servidor de desarrollo.
 4. Abre tu navegador y accede a la dirección `http://localhost:3000`.
 
 ## Características
 
-TodoTS te ofrece las siguientes características:
+PowerListing te ofrece las siguientes características:
 
 - Una interfaz simple y elegante que se adapta a cualquier dispositivo.
 - Una forma intuitiva de crear y gestionar tus tareas con solo unos clics.
@@ -31,7 +31,7 @@ TodoTS te ofrece las siguientes características:
 
 ## Créditos
 
-TodoTS está hecho con las siguientes tecnologías y librerías:
+PowerListing está hecho con las siguientes tecnologías y librerías:
 
 - [React](https://reactjs.org/): Una librería de JavaScript para construir interfaces de usuario.
 - [Vite](https://vitejs.dev/): Una herramienta de desarrollo web moderna y rápida.
