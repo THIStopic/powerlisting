@@ -1,4 +1,4 @@
-# TodoTS
+# PowerListing
 
 TodoTS es una aplicación web de lista de tareas hecha con React, TypeScript y Vite. Te permite crear, editar y eliminar tareas de forma rápida y sencilla. También puedes filtrar y ordenar tus tareas por prioridad, fecha o estado.
 
