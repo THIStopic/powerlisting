@@ -19,7 +19,6 @@ const AddTodo = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const dispatch = useDispatch();
 
-    // Lógica de negocio
     const handleAddTodo = () => {
         if (taskValue && descriptionValue) {
             dispatch(

@@ -26,14 +26,13 @@ const AllTasks = () => {
     // Aquí usamos el custom hook useTodoActions para obtener las acciones que necesitamos.
     const { togglePin, handleToggle, handleDelete } = useTodoActions();
 
-    // Efectos y lógica de negocio
     // Primero, inicializamos los todos desde sessionStorage cuando el componente se monta.
     useEffect(() => {
         const oldTodos = JSON.parse(sessionStorage.getItem('todos') || '[]');
         if (oldTodos.length > 0) {
             dispatch(initializeTodos(oldTodos));
         }
-    }, [dispatch]); // Nota: solo depende de dispatch, que no cambiará.
+    }, [dispatch]); // Nota: Solo depende de dispatch, que no cambiará.
 
     // Luego, actualizamos la sessionStorage cada vez que los todos cambian.
     useEffect(() => {
