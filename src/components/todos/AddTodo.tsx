@@ -1,19 +1,25 @@
+// Librerías externas
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTodo, filterTodos } from '../store/features/todosSlice';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Tooltip } from 'react-tooltip';
-import FloatingLabelInput from './FloatingLabelInput';
+
+// Acciones y slices de Redux
+import { addTodo, filterTodos } from '../../store/features/todosSlice';
+
+// Componentes
+import FloatingLabelInput from '../common/FloatingLabelInput';
 
 const AddTodo = () => {
+    // Hooks y estados
     const [taskValue, setTaskValue] = useState('');
     const [descriptionValue, setDescriptionValue] = useState('');
     const todos = useSelector((state: any) => state.todos.todos);
     const [selectedDate, setSelectedDate] = useState(new Date());
-
     const dispatch = useDispatch();
 
+    // Lógica de negocio
     const handleAddTodo = () => {
         if (taskValue && descriptionValue) {
             dispatch(

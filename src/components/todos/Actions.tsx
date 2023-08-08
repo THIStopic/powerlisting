@@ -1,4 +1,4 @@
-import { reverseOrder } from '../store/features/todosSlice';
+import { reverseOrder } from '../../store/features/todosSlice';
 import { useDispatch } from 'react-redux';
 import { Tooltip } from 'react-tooltip';
 

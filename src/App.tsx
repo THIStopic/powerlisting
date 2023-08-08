@@ -1,7 +1,7 @@
 import './App.css';
-import AddTodo from './components/AddTodo';
-import AllTasks from './components/AllTasks';
-import Separator from './components/Separator';
+import AddTodo from './components/todos/AddTodo';
+import AllTasks from './components/todos/AllTasks';
+import Separator from './components/common/Separator';
 
 function App() {
 

@@ -5,14 +5,14 @@ import { Tooltip } from 'react-tooltip';
 import autoAnimate from '@formkit/auto-animate';
 
 // Acciones y slices de Redux
-import { initializeTodos } from '../store/features/todosSlice';
+import { initializeTodos } from '../../store/features/todosSlice';
 
 // Componentes
 import Filter from './Filter';
 import Actions from './Actions';
 
 // Custom hooks
-import useTodoActions from './useTodoActions'; // Aquí importamos el custom hook useTodoActions.
+import useTodoActions from '../hooks/useTodoActions'; // Aquí importamos el custom hook useTodoActions.
 
 const AllTasks = () => {
     // Hooks y estados

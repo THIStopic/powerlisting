@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { toggleTodo, deleteTodo, pinToggle } from '../store/features/todosSlice';
+import { toggleTodo, deleteTodo, pinToggle } from '../../store/features/todosSlice';
 
 const useTodoActions = () => {
     const dispatch = useDispatch();
