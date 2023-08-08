@@ -55,11 +55,11 @@ const AllTasks = () => {
                         <div className="flex justify-between items-start truncate">
                             <span className={`text-base font-medium ${todo.completed ? 'text-slate-600 line-through' : 'w-full'} transition-all duration-200 ease-in-out truncate`}>{todo.title}</span>
                             {todo.completed ? (
-                                <button className="material-icons-round scale-75 -mr-1 rotate-45 text-background" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
+                                <button className="material-icons-round scale-75 -mr-1 rotate-45 text-background select-none" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
                                     push_pin
                                 </button>
                             ) : (
-                                <button className="material-icons-round scale-75 -mr-1 rotate-45" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
+                                <button className="material-icons-round scale-75 -mr-1 rotate-45 select-none" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
                                     push_pin
                                 </button>
                             )}
@@ -86,7 +86,7 @@ const AllTasks = () => {
                                         data-tooltip-id={`${todo.id}-delete`}
                                         data-tooltip-content="Eliminar"
                                         data-tooltip-place="left"
-                                        className="material-icons-round scale-75 -mr-1 -mb-1 text-background"
+                                        className="material-icons-round scale-75 -mr-1 -mb-1 text-background select-none"
                                         onClick={() => handleDelete(todo.id)}
                                         id={`${todo.id}-delete`}
                                     >
@@ -97,7 +97,7 @@ const AllTasks = () => {
                                         data-tooltip-id={`${todo.id}-delete`}
                                         data-tooltip-content="Eliminar"
                                         data-tooltip-place="left"
-                                        className="material-icons-round scale-75 -mr-1 -mb-1"
+                                        className="material-icons-round scale-75 -mr-1 -mb-1 select-none"
                                         onClick={() => handleDelete(todo.id)}
                                         id={`${todo.id}-delete`}
                                     >

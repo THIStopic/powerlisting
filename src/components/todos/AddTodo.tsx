@@ -59,7 +59,13 @@ const AddTodo = () => {
                         />
                     </div>
                     <div className="flex relative">
-                        <FloatingLabelInput id="form-input-description" label="Descripción" value={descriptionValue} onChange={setDescriptionValue} />
+                        <FloatingLabelInput
+                            id="form-input-description"
+                            label="Descripción"
+                            value={descriptionValue}
+                            onChange={setDescriptionValue}
+                            inputStyle="bg-cards rounded-lg px-3 py-5 w-full text-sm text-primarytext resize-none outline-none"
+                        />
                         <Tooltip className="sampletooltip2" id="ejemplo" />
                         <button onClick={handleAddTodo} className="absolute bottom-0 right-1">
                             <span
