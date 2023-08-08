@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTodo, filterTodos } from '../store/features/todos';
+import { addTodo, filterTodos } from '../store/features/todosSlice';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Tooltip } from 'react-tooltip';

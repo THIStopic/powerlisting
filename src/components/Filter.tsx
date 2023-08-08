@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterTodos } from '../store/features/todos';
+import { filterTodos } from '../store/features/todosSlice';
 
 const Filter = () => {
     const todos = useSelector((state: any) => state.todos.todos);

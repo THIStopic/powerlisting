@@ -1,39 +1,41 @@
+// Librerías externas
 import { useRef, useEffect } from 'react';
-import autoAnimate from '@formkit/auto-animate';
 import { useSelector, useDispatch } from 'react-redux';
-import { initializeTodos, toggleTodo, pinToggle, deleteTodo } from '../store/features/todos';
 import { Tooltip } from 'react-tooltip';
+import autoAnimate from '@formkit/auto-animate';
+
+// Acciones y slices de Redux
+import { initializeTodos } from '../store/features/todosSlice';
+
+// Componentes
 import Filter from './Filter';
 import Actions from './Actions';
 
+// Custom hooks
+import useTodoActions from './useTodoActions'; // Aquí importamos el custom hook useTodoActions.
+
 const AllTasks = () => {
+    // Hooks y estados
     const dispatch = useDispatch();
     const todos = useSelector((state: any) => state.todos.todos);
     const filteredTodos = useSelector((state: any) => state.todos.filteredTodos);
     const todosToShow = filteredTodos.length > 0 ? filteredTodos : todos;
     const parent = useRef<HTMLUListElement>(null);
 
-    const handleToggle = (id: number) => {
-        dispatch(toggleTodo(id));
-    };
+    // Custom hook para acciones de todos
+    // Aquí usamos el custom hook useTodoActions para obtener las acciones que necesitamos.
+    const { togglePin, handleToggle, handleDelete } = useTodoActions();
 
-    const handleDelete = (id: number) => {
-        dispatch(deleteTodo(id));
-    };
-
-    const togglePin = (id: number) => {
-        dispatch(pinToggle(id));
-    };
-
-    // Primero, inicializamos los todos desde sessionStorage cuando el componente se monta
+    // Efectos y lógica de negocio
+    // Primero, inicializamos los todos desde sessionStorage cuando el componente se monta.
     useEffect(() => {
         const oldTodos = JSON.parse(sessionStorage.getItem('todos') || '[]');
         if (oldTodos.length > 0) {
             dispatch(initializeTodos(oldTodos));
         }
-    }, [dispatch]); // Nota: solo depende de dispatch, que no cambiará
+    }, [dispatch]); // Nota: solo depende de dispatch, que no cambiará.
 
-    // Luego, actualizamos la sessionStorage cada vez que los todos cambian
+    // Luego, actualizamos la sessionStorage cada vez que los todos cambian.
     useEffect(() => {
         sessionStorage.setItem('todos', JSON.stringify(todos));
         parent.current && autoAnimate(parent.current);
