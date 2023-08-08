@@ -52,16 +52,14 @@ const AddTodo = () => {
                             shouldCloseOnEsc={true}
                             shouldCloseOnOutsideClick={true}
                             dateFormat="dd/MM/yyyy"
-                            className="flex justify-center items-center w-full md:w-96 bg-cards rounded-lg shadow-xl px-3 py-4 text-sm text-slate-500 outline-none"
+                            className="flex justify-center items-center w-full md:w-96 bg-cards rounded-lg shadow-xl px-3 py-4 text-sm text-slate-500 outline-none caret-transparent"
+                            onKeyDown={(e: any) => {
+                                e.preventDefault();
+                            }}
                         />
                     </div>
                     <div className="flex relative">
-                        <FloatingLabelInput
-                            id="form-input-description"
-                            label="Descripción"
-                            value={descriptionValue}
-                            onChange={setDescriptionValue}
-                        />
+                        <FloatingLabelInput id="form-input-description" label="Descripción" value={descriptionValue} onChange={setDescriptionValue} />
                         <Tooltip className="sampletooltip2" id="ejemplo" />
                         <button onClick={handleAddTodo} className="absolute bottom-0 right-1">
                             <span
