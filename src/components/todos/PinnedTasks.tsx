@@ -8,8 +8,7 @@ const PinnedTasks = () => {
     const todos = useSelector((state: any) => state.todos.todos);
     const parent = useRef<HTMLDivElement>(null);
 
-    const hasPinnedTodos = todos.some((todo: any) => todo.isPinned);
-    const pinnedTodos = todos.filter((todo: any) => todo.isPinned);
+    const pinnedTodos = todos.filter((todo:any) => todo.isPinned);
 
     useEffect(() => {
         parent.current && autoAnimate(parent.current);
@@ -17,9 +16,9 @@ const PinnedTasks = () => {
 
     return (
         <div>
-            {hasPinnedTodos ? <h1 className="mt-8 mb-4 flex justify-start font-medium">Tareas ancladas:</h1> : <h1 className="my-8 flex justify-center font-medium">¡No hay tareas ancladas!</h1>}
             {pinnedTodos.length > 0 ? (
                 <div>
+                    <h1 className="mt-8 mb-4 flex justify-start font-medium">Tareas fijadas:</h1>
                     <ul>
                         {pinnedTodos.map((todo) => (
                             <li key={todo.id}>{todo.title}</li>
@@ -27,7 +26,7 @@ const PinnedTasks = () => {
                     </ul>
                 </div>
             ) : (
-                <h1 className="my-8 flex justify-center font-medium">¡No hay tareas ancladas!</h1>
+                <h1 className="my-8 flex justify-center font-medium">¡No hay tareas fijadas!</h1>
             )}
         </div>
     );
