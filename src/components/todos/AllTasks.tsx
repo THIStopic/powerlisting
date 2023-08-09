@@ -54,7 +54,7 @@ const AllTasks = () => {
                     <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
                         <div className="flex justify-between items-start truncate">
                             <span className={`text-base font-medium ${todo.completed ? 'text-slate-600 line-through' : 'w-full'} transition-all duration-200 ease-in-out truncate`}>{todo.title}</span>
-                            {todo.completed ? (
+                            {!todo.isPinned ? (
                                 <button className="material-icons-round scale-75 -mr-1 rotate-45 text-background select-none" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
                                     push_pin
                                 </button>

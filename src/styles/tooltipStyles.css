@@ -1,0 +1,13 @@
+.sampletooltip,
+.sampletooltip2 {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.75rem !important;
+}
+
+.sampletooltip {
+    background-color: #222327 !important;
+}
+
+.sampletooltip2 {
+    background-color: #131314 !important;
+}
