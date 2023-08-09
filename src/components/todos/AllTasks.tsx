@@ -86,7 +86,7 @@ const AllTasks = () => {
                                         data-tooltip-id={`${todo.id}-delete`}
                                         data-tooltip-content="Eliminar"
                                         data-tooltip-place="left"
-                                        className="material-icons-round scale-75 -mr-1 -mb-1 text-background select-none"
+                                        className="material-icons-round scale-75 -mr-1 -mb-1 text-background select-none transition-all duration-200 ease-in-out"
                                         onClick={() => handleDelete(todo.id)}
                                         id={`${todo.id}-delete`}
                                     >
@@ -97,7 +97,7 @@ const AllTasks = () => {
                                         data-tooltip-id={`${todo.id}-delete`}
                                         data-tooltip-content="Eliminar"
                                         data-tooltip-place="left"
-                                        className="material-icons-round scale-75 -mr-1 -mb-1 select-none"
+                                        className="material-icons-round scale-75 -mr-1 -mb-1 select-none transition-all duration-200 ease-in-out"
                                         onClick={() => handleDelete(todo.id)}
                                         id={`${todo.id}-delete`}
                                     >
