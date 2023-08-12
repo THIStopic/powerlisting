@@ -1,26 +1,20 @@
 // External libraries
-import { useRef, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import autoAnimate from '@formkit/auto-animate';
+import { useSelector } from 'react-redux';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const PinnedTasks = () => {
-    const dispatch = useDispatch();
     const todos = useSelector((state: any) => state.todos.todos);
-    const parent = useRef<HTMLDivElement>(null);
+    const [parent] = useAutoAnimate();
 
-    const pinnedTodos = todos.filter((todo:any) => todo.isPinned);
-
-    useEffect(() => {
-        parent.current && autoAnimate(parent.current);
-    }, []);
+    const pinnedTodos = todos.filter((todo: any) => todo.isPinned);
 
     return (
         <div>
             {pinnedTodos.length > 0 ? (
                 <div>
                     <h1 className="mt-8 mb-4 flex justify-start font-medium">Tareas fijadas:</h1>
-                    <ul>
-                        {pinnedTodos.map((todo) => (
+                    <ul ref={parent}>
+                        {pinnedTodos.map((todo: any) => (
                             <li key={todo.id}>{todo.title}</li>
                         ))}
                     </ul>

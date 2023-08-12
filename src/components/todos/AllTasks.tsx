@@ -1,8 +1,8 @@
 // Librerías externas
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Tooltip } from 'react-tooltip';
-import autoAnimate from '@formkit/auto-animate';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 // Acciones y slices de Redux
 import { initializeTodos } from '../../store/features/todosSlice';
@@ -20,11 +20,12 @@ const AllTasks = () => {
     const todos = useSelector((state: any) => state.todos.todos);
     const filteredTodos = useSelector((state: any) => state.todos.filteredTodos);
     const todosToShow = filteredTodos.length > 0 ? filteredTodos : todos;
-    const parent = useRef<HTMLUListElement>(null);
-
+    
     // Custom hook para acciones de todos
     // Aquí usamos el custom hook useTodoActions para obtener las acciones que necesitamos.
     const { togglePin, handleToggle, handleDelete } = useTodoActions();
+    // Custom hook para animaciones
+    const [parent] = useAutoAnimate();
 
     // Primero, inicializamos los todos desde sessionStorage cuando el componente se monta.
     useEffect(() => {
@@ -37,7 +38,6 @@ const AllTasks = () => {
     // Luego, actualizamos la sessionStorage cada vez que los todos cambian.
     useEffect(() => {
         sessionStorage.setItem('todos', JSON.stringify(todos));
-        parent.current && autoAnimate(parent.current);
     }, [todos]);
 
     return (
