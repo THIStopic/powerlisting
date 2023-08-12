@@ -20,7 +20,14 @@ const PinnedTasks = () => {
                     </ul>
                 </div>
             ) : (
-                <h1 className="my-8 flex justify-center font-medium">¡No hay tareas fijadas!</h1>
+                <div>
+                    <h1 className="mt-8 mb-4 flex justify-center font-medium">¡No hay tareas fijadas!</h1>
+                    <ul ref={parent} className='hidden'>
+                        {pinnedTodos.map((todo: any) => (
+                            <li key={todo.id}>{todo.title}</li>
+                        ))}
+                    </ul>
+                </div>
             )}
         </div>
     );
