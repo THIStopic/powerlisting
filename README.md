@@ -25,7 +25,7 @@ PowerListing te ofrece las siguientes características:
 - Una interfaz simple y elegante que se adapta a cualquier dispositivo.
 - Una forma intuitiva de crear y gestionar tus tareas con solo unos clics.
 - Una opción para marcar tus tareas como completadas o pendientes.
-- Una opción para asignar una prioridad, una fecha límite y una nota a cada tarea.
+- Una opción para asignar una fecha limite y una nota a cada tarea.
 - Una opción para filtrar y ordenar tus tareas por diferentes criterios.
 - Una opción para borrar todas las tareas completadas de una sola vez.
 
@@ -35,8 +35,9 @@ PowerListing está hecho con las siguientes tecnologías y librerías:
 
 - [React](https://reactjs.org/): Una librería de JavaScript para construir interfaces de usuario.
 - [Vite](https://vitejs.dev/): Una herramienta de desarrollo web moderna y rápida.
-- [Tailwind CSS](https://tailwindcss.com/): Un framework de CSS que te permite crear diseños personalizados sin salir del HTML.
 - [Redux](https://es.redux.js.org/): Una biblioteca de JavaScript para el manejo del estado de la aplicación.
-- [AutoAnimate](https://auto-animate.formkit.com/): Una librería de animaciones para React.
-- [React Tooltip](https://www.npmjs.com/package/react-tooltip): Una librería de tooltips para React.
+- [redux-toolkit](https://redux-toolkit.js.org/): Una biblioteca de utilidades para Redux.
+- [Tailwind CSS](https://tailwindcss.com/): Un framework de CSS que te permite crear diseños personalizados sin salir del HTML.
 - [React Datepicker](https://reactdatepicker.com/): Una librería de datepickers para React.
+- [React Tooltip](https://www.npmjs.com/package/react-tooltip): Una librería de tooltips para React.
+- [AutoAnimate](https://auto-animate.formkit.com/): Una librería de animaciones para React.

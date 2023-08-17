@@ -20,7 +20,7 @@ const FloatingLabelInput: React.FC<FloatingLabelInputProps> = ({ id, label, valu
         isFocused || value ? '-ml-2 px-2 transform -translate-y-4 text-sm text-primarytext' : 'text-slate-600'
     }`;
 
-    const defaultInputStyle = 'bg-cards rounded-lg px-3 py-4 w-full text-sm text-slate-700 outline-none'; 
+    const defaultInputStyle = 'bg-cards rounded-lg px-3 py-4 w-full text-sm text-primarytext outline-none'; 
 
     return (
         <div className="flex w-full relative">

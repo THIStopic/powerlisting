@@ -6,6 +6,7 @@ interface Todo {
     description: string;
     completed: boolean;
     isPinned: boolean;
+    date?: string;
 }
 
 interface TodosState {
@@ -22,6 +23,7 @@ const initialState: TodosState = {
             description: 'Aprender a usar la biblioteca de JavaScript React para crear interfaces de usuario dinámicas y reactivas.',
             completed: false,
             isPinned: false,
+            date: new Date().toLocaleDateString('es-ES'),
         },
         {
             id: 2,
@@ -29,6 +31,7 @@ const initialState: TodosState = {
             description: 'Aprender a usar el gestor de estado global Redux para manejar el flujo de datos y la lógica de la aplicación.',
             completed: true,
             isPinned: false,
+            date: new Date().toLocaleDateString('es-ES'),
         },
         {
             id: 3,
@@ -36,6 +39,7 @@ const initialState: TodosState = {
             description: 'Aprender a usar la herramienta de desarrollo Vite para crear proyectos web modernos con una experiencia de desarrollo rápida y optimizada.',
             completed: false,
             isPinned: false,
+            date: new Date().toLocaleDateString('es-ES'),
         },
         {
             id: 4,
@@ -43,6 +47,7 @@ const initialState: TodosState = {
             description: 'Aprender a usar el lenguaje TypeScript para escribir código JavaScript con tipos estáticos y evitar errores en tiempo de ejecución.',
             completed: true,
             isPinned: false,
+            date: new Date().toLocaleDateString('es-ES'),
         },
         {
             id: 5,
@@ -50,6 +55,7 @@ const initialState: TodosState = {
             description: 'Aprender a usar la biblioteca React Router para gestionar la navegación y las rutas en una aplicación web basada en React.',
             completed: true,
             isPinned: false,
+            date: new Date().toLocaleDateString('es-ES'),
         },
         {
             id: 6,
@@ -57,6 +63,7 @@ const initialState: TodosState = {
             description: 'Aprender a usar la biblioteca React Redux para conectar los componentes de React con el estado global de Redux y acceder a los datos y las acciones.',
             completed: false,
             isPinned: false,
+            date: new Date().toLocaleDateString('es-ES'),
         },
     ],
     filteredTodos: [],
@@ -76,17 +83,17 @@ const todosSlice = createSlice({
             state.todos.sort((a, b) => b.id - a.id);
         },
         deleteTodo: (state, action) => {
-            state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+            state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
             state.todos.sort((a, b) => b.id - a.id);
         },
         toggleTodo: (state, action) => {
-            const todo = state.todos.find((todo) => todo.id === action.payload);
+            const todo = state.todos.find((todo) => todo.id === action.payload.id);
             if (todo) {
                 todo.completed = !todo.completed;
             }
         },
         pinToggle(state, action) {
-            const todo = state.todos.find((todo) => todo.id === action.payload);
+            const todo = state.todos.find((todo) => todo.id === action.payload.id);
             if (todo) {
                 // Se invertirá el valor de la propiedad isPinned.
                 todo.isPinned = !todo.isPinned;

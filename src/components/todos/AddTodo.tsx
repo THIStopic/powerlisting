@@ -1,17 +1,25 @@
+// Librerías externas
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addTodo, filterTodos } from '../store/features/todos';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Tooltip } from 'react-tooltip';
-import FloatingLabelInput from './FloatingLabelInput';
+
+// Acciones y slices de Redux
+import { addTodo, filterTodos } from '../../store/features/todosSlice';
+
+// Componentes
+import FloatingLabelInput from '../common/FloatingLabelInput';
+
+// Estilos
+import datePickerStyles from '../../datePickerStyles.module.css';
 
 const AddTodo = () => {
+    // Hooks y estados
     const [taskValue, setTaskValue] = useState('');
     const [descriptionValue, setDescriptionValue] = useState('');
     const todos = useSelector((state: any) => state.todos.todos);
     const [selectedDate, setSelectedDate] = useState(new Date());
-
     const dispatch = useDispatch();
 
     const handleAddTodo = () => {
@@ -47,7 +55,10 @@ const AddTodo = () => {
                             shouldCloseOnEsc={true}
                             shouldCloseOnOutsideClick={true}
                             dateFormat="dd/MM/yyyy"
-                            className="flex justify-center items-center w-full md:w-96 bg-cards rounded-lg shadow-xl px-3 py-4 text-sm text-slate-500 outline-none"
+                            className="flex justify-center items-center w-full md:w-96 bg-cards rounded-lg shadow-xl px-3 py-4 text-sm text-slate-500 outline-none caret-transparent"
+                            onKeyDown={(e: any) => {
+                                e.preventDefault();
+                            }}
                         />
                     </div>
                     <div className="flex relative">
@@ -56,7 +67,7 @@ const AddTodo = () => {
                             label="Descripción"
                             value={descriptionValue}
                             onChange={setDescriptionValue}
-                            inputStyle="bg-cards rounded-lg px-3 py-5 w-full text-sm text-slate-700 resize-none outline-none"
+                            inputStyle="bg-cards rounded-lg px-3 py-5 w-full text-sm text-primarytext resize-none outline-none"
                         />
                         <Tooltip className="sampletooltip2" id="ejemplo" />
                         <button onClick={handleAddTodo} className="absolute bottom-0 right-1">
