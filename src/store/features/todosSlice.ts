@@ -30,7 +30,7 @@ const initialState: TodosState = {
             title: 'Learn Redux',
             description: 'Aprender a usar el gestor de estado global Redux para manejar el flujo de datos y la lógica de la aplicación.',
             completed: true,
-            isPinned: false,
+            isPinned: true,
             date: new Date().toLocaleDateString('es-ES'),
         },
         {
@@ -46,7 +46,7 @@ const initialState: TodosState = {
             title: 'Learn TypeScript',
             description: 'Aprender a usar el lenguaje TypeScript para escribir código JavaScript con tipos estáticos y evitar errores en tiempo de ejecución.',
             completed: true,
-            isPinned: false,
+            isPinned: true,
             date: new Date().toLocaleDateString('es-ES'),
         },
         {

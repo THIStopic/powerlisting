@@ -27,11 +27,11 @@ const PinnedTasks = () => {
                                         {todo.title}
                                     </span>
                                     {!todo.isPinned ? (
-                                        <button className="material-icons-round scale-75 -mr-1 rotate-45 text-background select-none" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
+                                        <button className="material-icons-round scale-75 -mr-1 rotate-45 text-background select-none transition-all duration-200 ease-in-out" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
                                             push_pin
                                         </button>
                                     ) : (
-                                        <button className="material-icons-round scale-75 -mr-1 rotate-45 select-none" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
+                                        <button className="material-icons-round scale-75 -mr-1 rotate-45 select-none transition-all duration-200 ease-in-out" onClick={() => togglePin(todo.id)} id={`${todo.id}-pin`}>
                                             push_pin
                                         </button>
                                     )}
