@@ -34,7 +34,7 @@ const Actions = () => {
                 aria-label="Ordenar"
                 className="material-icons-round bg-cards py-1 px-2 rounded text-primarytext mt-4 cursor-pointer"
             >
-                clear
+                delete_sweep
             </button>
         </div>
     );
