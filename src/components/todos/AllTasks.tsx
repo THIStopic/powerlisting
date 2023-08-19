@@ -51,7 +51,7 @@ const AllTasks = () => {
             <Actions />
             <ul ref={parent} className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {todosToShow.map((todo: any) => (
-                    <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
+                    <li key={todo.id} className="flex flex-col justify-center gap-3 w-full h-36 bg-cards shadow-xl rounded-lg py-4 px-6">
                         <div className="flex justify-between items-start truncate">
                             <span className={`text-base font-medium ${todo.completed ? 'text-slate-600 line-through' : 'w-full'} transition-all duration-200 ease-in-out truncate`}>{todo.title}</span>
                             {!todo.isPinned ? (

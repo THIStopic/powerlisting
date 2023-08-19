@@ -21,7 +21,7 @@ const PinnedTasks = () => {
                         <li>Fija tu primera tarea para comenzar.</li>
                     ) : (
                         pinnedTodos.map((todo: any) => (
-                            <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
+                            <li key={todo.id} className="flex flex-col justify-center gap-3 w-full h-28 bg-cards shadow-xl rounded-lg py-4 px-6">
                                 <div className="flex justify-between items-start truncate">
                                     <span className={`text-base font-medium ${todo.completed ? 'text-slate-600 line-through' : 'w-full'} transition-all duration-200 ease-in-out truncate`}>
                                         {todo.title}
