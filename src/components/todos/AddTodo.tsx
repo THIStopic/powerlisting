@@ -67,13 +67,8 @@ const AddTodo = () => {
                             onChange={setDescriptionValue}
                             inputStyle="bg-cards rounded-lg px-3 py-5 w-full text-sm text-primarytext resize-none outline-none"
                         />
-                        <Tooltip className="sampletooltip2" id="ejemplo" />
                         <button onClick={handleAddTodo} className="absolute bottom-0 right-1">
                             <span
-                                key="ejemplo"
-                                data-tooltip-id="ejemplo"
-                                data-tooltip-content="Enviar"
-                                data-tooltip-place="bottom-end"
                                 className="material-icons-round text-background hover:text-slate-600 transition-all duration-200 ease-in-out px-1"
                             >
                                 send
