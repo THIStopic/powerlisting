@@ -11,9 +11,6 @@ import { addTodo, filterTodos } from '../../store/features/todosSlice';
 // Componentes
 import FloatingLabelInput from '../common/FloatingLabelInput';
 
-// Estilos
-import datePickerStyles from '../../datePickerStyles.module.css';
-
 const AddTodo = () => {
     // Hooks y estados
     const [taskValue, setTaskValue] = useState('');
@@ -29,7 +26,8 @@ const AddTodo = () => {
                     id: todos.length + 1,
                     title: taskValue,
                     description: descriptionValue,
-                    date: selectedDate.toLocaleDateString(undefined, { month: '2-digit', day: '2-digit', year: 'numeric' }),
+                    date: selectedDate.toISOString().split('T')[0], // Fecha en formato ISO 8601
+                    displayDate: selectedDate.toLocaleDateString('es-ES'), // Fecha en formato español
                     completed: false,
                 })
             );
@@ -69,13 +67,8 @@ const AddTodo = () => {
                             onChange={setDescriptionValue}
                             inputStyle="bg-cards rounded-lg px-3 py-5 w-full text-sm text-primarytext resize-none outline-none"
                         />
-                        <Tooltip className="sampletooltip2" id="ejemplo" />
                         <button onClick={handleAddTodo} className="absolute bottom-0 right-1">
                             <span
-                                key="ejemplo"
-                                data-tooltip-id="ejemplo"
-                                data-tooltip-content="Enviar"
-                                data-tooltip-place="bottom-end"
                                 className="material-icons-round text-background hover:text-slate-600 transition-all duration-200 ease-in-out px-1"
                             >
                                 send

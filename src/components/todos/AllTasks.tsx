@@ -20,7 +20,8 @@ const AllTasks = () => {
     const todos = useSelector((state: any) => state.todos.todos);
     const filteredTodos = useSelector((state: any) => state.todos.filteredTodos);
     const todosToShow = filteredTodos.length > 0 ? filteredTodos : todos;
-    
+    const sortedTodosToShow = [...todosToShow].sort((b, a) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
     // Custom hook para acciones de todos
     // Aquí usamos el custom hook useTodoActions para obtener las acciones que necesitamos.
     const { togglePin, handleToggle, handleDelete } = useTodoActions();
@@ -42,7 +43,7 @@ const AllTasks = () => {
 
     return (
         <div>
-            {todosToShow.length ? (
+            {sortedTodosToShow.length ? (
                 <h1 className="mt-8 mb-4 flex justify-start font-medium">Todas las tareas:</h1>
             ) : (
                 <h1 className="my-8 flex justify-center font-medium">¡Crea una tarea para comenzar!</h1>
@@ -50,8 +51,8 @@ const AllTasks = () => {
             <Filter />
             <Actions />
             <ul ref={parent} className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {todosToShow.map((todo: any) => (
-                    <li key={todo.id} className="flex flex-col gap-3 w-full bg-cards shadow-xl rounded-lg py-4 px-6">
+                {sortedTodosToShow.map((todo: any) => (
+                    <li key={todo.id} className="flex flex-col justify-center gap-3 w-full h-36 bg-cards shadow-xl rounded-lg py-4 px-6">
                         <div className="flex justify-between items-start truncate">
                             <span className={`text-base font-medium ${todo.completed ? 'text-slate-600 line-through' : 'w-full'} transition-all duration-200 ease-in-out truncate`}>{todo.title}</span>
                             {!todo.isPinned ? (
@@ -66,7 +67,7 @@ const AllTasks = () => {
                         </div>
                         <div className="flex flex-col items-start truncate">
                             <span className={`text-xs w-full truncate ${todo.completed ? 'text-slate-600' : ''} transition-all duration-200 ease-in-out`}>{todo.description}</span>
-                            <span className={`text-xs w-full truncate ${todo.completed ? 'text-slate-600' : ''} transition-all duration-200 ease-in-out`}>{todo.date}</span>
+                            <span className={`text-xs w-full truncate ${todo.completed ? 'text-slate-600' : ''} transition-all duration-200 ease-in-out`}>{todo.displayDate}</span>
                         </div>
                         <div className="flex items-center justify-start">
                             <div className="left_side flex items-center w-1/2">

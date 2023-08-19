@@ -1,27 +1,34 @@
-import { reverseOrder } from '../../store/features/todosSlice';
-import { useDispatch } from 'react-redux';
+import { clearTodos } from '../../store/features/todosSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import { Tooltip } from 'react-tooltip';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const Actions = () => {
     const dispatch = useDispatch();
+    const todos = useSelector((state: any) => state.todos.todos);
+    const [parent] = useAutoAnimate();
 
-    const handleSorting = () => {
-        dispatch(reverseOrder());
+    const handleClear = () => {
+        dispatch(clearTodos());
     };
 
     return (
-        <div className="actions flex gap-2">
+        <div ref={parent} className="actions flex gap-2">
             <Tooltip className="sampletooltip2" id="sort" />
-            <button
-                data-tooltip-id="sort"
-                data-tooltip-content="Ordenar"
-                data-tooltip-place="right"
-                onClick={handleSorting}
-                aria-label="Ordenar"
-                className="material-icons-round bg-cards py-1 px-2 rounded text-primarytext mt-4 cursor-pointer"
-            >
-                sort
-            </button>
+            {todos.length > 0 ? (
+                <button
+                    data-tooltip-id="sort"
+                    data-tooltip-content="Limpiar"
+                    data-tooltip-place="right"
+                    onClick={handleClear}
+                    aria-label="Ordenar"
+                    className="material-icons-round bg-cards py-1 px-2 rounded text-primarytext mt-4 cursor-pointer"
+                >
+                    delete_sweep
+                </button>
+            ) : (
+                null
+            )}
         </div>
     );
 };

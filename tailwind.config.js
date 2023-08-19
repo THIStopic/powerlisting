@@ -5,6 +5,7 @@ export default {
         extend: {
             fontFamily: {
                 poppins: ['Poppins', 'sans-serif'],
+                handlee: ['Handlee', 'cursive'],
             },
             colors: {
                 background: '#222327',
