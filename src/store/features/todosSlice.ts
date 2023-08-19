@@ -113,7 +113,7 @@ const todosSlice = createSlice({
             state.filteredTodos.sort((a, b) => b.id - a.id);
         },
         reverseOrder: (state) => {
-            state.filteredTodos.reverse();
+            state.todos.reverse();
         },
         clearTodos: (state) => {
             state.todos = state.todos.filter((todo) => !todo.completed);
