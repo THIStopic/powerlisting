@@ -11,6 +11,7 @@ const PinnedTasks = () => {
     const [parent2] = useAutoAnimate();
 
     const pinnedTodos = todos.filter((todo: any) => todo.isPinned);
+    const sortedPinnedTodos = [...pinnedTodos].sort((b, a) => new Date(b.date).getTime() - new Date(a.date).getTime());
     const { togglePin } = useTodoActions();
 
     return (
@@ -19,10 +20,10 @@ const PinnedTasks = () => {
                 <div>
                     <h1 className="mt-8 mb-4 flex justify-start font-medium">Tareas fijadas:</h1>
                     <ul ref={parent2} className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {pinnedTodos.length === 0 ? (
+                        {sortedPinnedTodos.length === 0 ? (
                             <li>Fija tu primera tarea para comenzar.</li>
                         ) : (
-                            pinnedTodos.map((todo: any) => (
+                            sortedPinnedTodos.map((todo: any) => (
                                 <li key={todo.id} className="flex flex-col justify-center gap-3 w-full h-28 bg-cards shadow-xl rounded-lg py-4 px-6">
                                     <div className="flex justify-between items-start truncate">
                                         <span className={`text-base font-medium ${todo.completed ? 'text-slate-600 line-through' : 'w-full'} transition-all duration-200 ease-in-out truncate`}>
