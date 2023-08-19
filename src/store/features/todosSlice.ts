@@ -84,20 +84,28 @@ const todosSlice = createSlice({
         },
         deleteTodo: (state, action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
+            state.filteredTodos = state.filteredTodos.filter((todo) => todo.id !== action.payload.id);
             state.todos.sort((a, b) => b.id - a.id);
         },
         toggleTodo: (state, action) => {
             const todo = state.todos.find((todo) => todo.id === action.payload.id);
+            const filteredTodo = state.filteredTodos.find((todo) => todo.id === action.payload.id);
             if (todo) {
                 todo.completed = !todo.completed;
+            }
+            if (filteredTodo) {
+                filteredTodo.completed = !filteredTodo.completed;
             }
         },
         pinToggle(state, action) {
             const todo = state.todos.find((todo) => todo.id === action.payload.id);
+            const filteredTodo = state.filteredTodos.find((todo) => todo.id === action.payload.id);
             if (todo) {
-                // Se invertirá el valor de la propiedad isPinned.
                 todo.isPinned = !todo.isPinned;
                 console.log(`${todo.title} has been ${todo.isPinned ? 'pinned' : 'unpinned'}.`);
+            }
+            if (filteredTodo) {
+                filteredTodo.isPinned = !filteredTodo.isPinned;
             }
         },
         filterTodos: (state, action) => {
