@@ -48,7 +48,7 @@ const PinnedTasks = () => {
                                     </div>
                                     <div className="flex flex-col items-start truncate">
                                         <span className={`text-xs w-full truncate ${todo.completed ? 'text-slate-600' : ''} transition-all duration-200 ease-in-out`}>{todo.description}</span>
-                                        <span className={`text-xs w-full truncate ${todo.completed ? 'text-slate-600' : ''} transition-all duration-200 ease-in-out`}>{todo.date}</span>
+                                        <span className={`text-xs w-full truncate ${todo.completed ? 'text-slate-600' : ''} transition-all duration-200 ease-in-out`}>{todo.displayDate}</span>
                                     </div>
                                 </li>
                             ))

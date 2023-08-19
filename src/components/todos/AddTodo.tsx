@@ -29,7 +29,8 @@ const AddTodo = () => {
                     id: todos.length + 1,
                     title: taskValue,
                     description: descriptionValue,
-                    date: selectedDate.toLocaleDateString(undefined, { month: '2-digit', day: '2-digit', year: 'numeric' }),
+                    date: selectedDate.toISOString().split('T')[0], // Fecha en formato ISO 8601
+                    displayDate: selectedDate.toLocaleDateString('es-ES'), // Fecha en formato español
                     completed: false,
                 })
             );

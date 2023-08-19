@@ -7,6 +7,7 @@ interface Todo {
     completed: boolean;
     isPinned: boolean;
     date?: string;
+    displayDate?: string;
 }
 
 interface TodosState {
@@ -23,7 +24,8 @@ const initialState: TodosState = {
             description: 'Aprender a usar la biblioteca de JavaScript React para crear interfaces de usuario dinámicas y reactivas.',
             completed: false,
             isPinned: false,
-            date: new Date().toLocaleDateString('es-ES'),
+            date: new Date().toISOString().split('T')[0],
+            displayDate: new Date().toLocaleDateString('es-ES'),
         },
         {
             id: 2,
@@ -31,7 +33,8 @@ const initialState: TodosState = {
             description: 'Aprender a usar el gestor de estado global Redux para manejar el flujo de datos y la lógica de la aplicación.',
             completed: true,
             isPinned: true,
-            date: new Date().toLocaleDateString('es-ES'),
+            date: new Date().toISOString().split('T')[0],
+            displayDate: new Date().toLocaleDateString('es-ES'),
         },
         {
             id: 3,
@@ -39,7 +42,8 @@ const initialState: TodosState = {
             description: 'Aprender a usar la herramienta de desarrollo Vite para crear proyectos web modernos con una experiencia de desarrollo rápida y optimizada.',
             completed: false,
             isPinned: false,
-            date: new Date().toLocaleDateString('es-ES'),
+            date: new Date().toISOString().split('T')[0],
+            displayDate: new Date().toLocaleDateString('es-ES'),
         },
         {
             id: 4,
@@ -47,7 +51,8 @@ const initialState: TodosState = {
             description: 'Aprender a usar el lenguaje TypeScript para escribir código JavaScript con tipos estáticos y evitar errores en tiempo de ejecución.',
             completed: true,
             isPinned: true,
-            date: new Date().toLocaleDateString('es-ES'),
+            date: new Date().toISOString().split('T')[0],
+            displayDate: new Date().toLocaleDateString('es-ES'),
         },
         {
             id: 5,
@@ -55,7 +60,8 @@ const initialState: TodosState = {
             description: 'Aprender a usar la biblioteca React Router para gestionar la navegación y las rutas en una aplicación web basada en React.',
             completed: true,
             isPinned: false,
-            date: new Date().toLocaleDateString('es-ES'),
+            date: new Date().toISOString().split('T')[0],
+            displayDate: new Date().toLocaleDateString('es-ES'),
         },
         {
             id: 6,
@@ -63,7 +69,8 @@ const initialState: TodosState = {
             description: 'Aprender a usar la biblioteca React Redux para conectar los componentes de React con el estado global de Redux y acceder a los datos y las acciones.',
             completed: false,
             isPinned: false,
-            date: new Date().toLocaleDateString('es-ES'),
+            date: new Date().toISOString().split('T')[0],
+            displayDate: new Date().toLocaleDateString('es-ES'),
         },
     ],
     filteredTodos: [],
@@ -80,12 +87,10 @@ const todosSlice = createSlice({
         },
         addTodo: (state, action) => {
             state.todos.push(action.payload);
-            state.todos.sort((a, b) => b.id - a.id);
         },
         deleteTodo: (state, action) => {
             state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
             state.filteredTodos = state.filteredTodos.filter((todo) => todo.id !== action.payload.id);
-            state.todos.sort((a, b) => b.id - a.id);
         },
         toggleTodo: (state, action) => {
             const todo = state.todos.find((todo) => todo.id === action.payload.id);
@@ -110,10 +115,10 @@ const todosSlice = createSlice({
         },
         filterTodos: (state, action) => {
             state.filteredTodos = [...action.payload];
-            state.filteredTodos.sort((a, b) => b.id - a.id);
         },
         reverseOrder: (state) => {
             state.todos.reverse();
+            state.filteredTodos.reverse();
         },
         clearTodos: (state) => {
             state.todos = state.todos.filter((todo) => !todo.completed);
