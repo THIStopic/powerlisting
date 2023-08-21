@@ -33,62 +33,81 @@ const initialState: TodosState = {
     todos: [
         {
             id: 1,
-            title: 'Learn React',
+            title: 'Aprender React',
             description: 'Aprender a usar la biblioteca de JavaScript React para crear interfaces de usuario dinámicas y reactivas.',
-            completed: false,
+            completed: true,
             isPinned: false,
-            // Utilizamos el spread operator para añadir las propiedades date y displayDate al objeto.
             ...getRandomDate(1, 30),
         },
         {
             id: 2,
-            title: 'Learn Redux',
-            description: 'Aprender a usar el gestor de estado global Redux para manejar el flujo de datos y la lógica de la aplicación.',
+            title: 'Hacer ejercicio',
+            description: 'Realizar 30 minutos de ejercicio cardiovascular para mantenerme en forma y saludable.',
             completed: true,
-            isPinned: true,
-            // Utilizamos el spread operator para añadir las propiedades date y displayDate al objeto.
+            isPinned: false,
             ...getRandomDate(1, 30),
         },
         {
             id: 3,
-            title: 'Learn Vite',
-            description: 'Aprender a usar la herramienta de desarrollo Vite para crear proyectos web modernos con una experiencia de desarrollo rápida y optimizada.',
-            completed: false,
+            title: 'Hacer la compra',
+            description: 'Ir al supermercado a hacer la compra para la semana.',
+            completed: true,
             isPinned: false,
-            // Utilizamos el spread operator para añadir las propiedades date y displayDate al objeto.
             ...getRandomDate(1, 30),
         },
         {
             id: 4,
-            title: 'Learn TypeScript',
-            description: 'Aprender a usar el lenguaje TypeScript para escribir código JavaScript con tipos estáticos y evitar errores en tiempo de ejecución.',
-            completed: true,
+            title: 'Revisar correo electrónico',
+            description: 'Revisar y responder correos electrónicos pendientes en el trabajo.',
+            completed: false,
             isPinned: true,
-            // Utilizamos el spread operator para añadir las propiedades date y displayDate al objeto.
             ...getRandomDate(1, 30),
         },
         {
             id: 5,
-            title: 'Learn React Router',
-            description: 'Aprender a usar la biblioteca React Router para gestionar la navegación y las rutas en una aplicación web basada en React.',
+            title: 'Estudiar TypeScript',
+            description: 'Aprender TypeScript para mejorar mis habilidades en el desarrollo de aplicaciones web.',
             completed: true,
             isPinned: false,
-            // Utilizamos el spread operator para añadir las propiedades date y displayDate al objeto.
             ...getRandomDate(1, 30),
         },
         {
             id: 6,
-            title: 'Learn React Redux',
-            description: 'Aprender a usar la biblioteca React Redux para conectar los componentes de React con el estado global de Redux y acceder a los datos y las acciones.',
-            completed: false,
+            title: 'Pagar facturas',
+            description: 'Pagar las facturas de servicios públicos y tarjetas de crédito antes de la fecha límite.',
+            completed: true,
             isPinned: false,
-            // Utilizamos el spread operator para añadir las propiedades date y displayDate al objeto.
+            ...getRandomDate(1, 30),
+        },
+        {
+            id: 7,
+            title: 'Reunión con el equipo',
+            description: 'Asistir a la reunión semanal con el equipo de trabajo para discutir el progreso del proyecto.',
+            completed: false,
+            isPinned: true,
+            ...getRandomDate(1, 30),
+        },
+        {
+            id: 8,
+            title: 'Cita con el médico',
+            description: 'Acudir a la cita con el médico para el chequeo anual y discutir los resultados de los análisis.',
+            completed: true,
+            isPinned: false,
+            ...getRandomDate(1, 30),
+        },
+        {
+            id: 9,
+            title: 'Planificar vacaciones',
+            description: 'Investigar destinos y planificar las próximas vacaciones familiares.',
+            completed: false,
+            isPinned: true,
             ...getRandomDate(1, 30),
         },
     ],
     filteredTodos: [],
     pinnedTodos: [],
 };
+
 
 const todosSlice = createSlice({
     name: 'todos',
