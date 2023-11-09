@@ -1,8 +1,13 @@
 ### PowerListing
 
-PowerListing is a web-based task list application made with React, TypeScript, and Vite. It allows you to create, edit, and delete tasks quickly and easily. You can also filter and sort your tasks by priority, date, or status.
+#### Project Preview
 
 ![Project Preview](./public/showcase.png)
+
+#### Description
+
+PowerListing is a web-based task list application made with React, TypeScript, and Vite. It allows you to create, edit, and delete tasks quickly and easily. You can also filter and sort your tasks by priority, date, or status.
+
 
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
