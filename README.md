@@ -12,10 +12,10 @@ PowerListing is a web-based task list application made with React, TypeScript, a
 
 To install PowerListing, you need to have Node.js installed on your machine. Then, follow these steps:
 
-- Clone this repository to your local directory: git clone https://github.com/example/PowerListing.git
-- Run the command npm install to install the project dependencies.
-- Run the command npm run dev to start the development server.
-- Open your browser and go to the address http://localhost:3000.
+- Clone this repository to your local directory: `git clone https://github.com/example/PowerListing.git`
+- Run the command `npm install` to install the project dependencies.
+- Run the command `npm run dev` to start the development server.
+- Open your browser and go to the address`http://localhost:3000`.
 
 #### Features
 
