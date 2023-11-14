@@ -35,7 +35,7 @@ PowerListing offers you the following features:
 -   An option to filter and sort your tasks by different criteria.
 -   An option to delete all completed tasks at once.
 
-## Technologies:
+#### Technologies:
 
 PowerListing está hecho con las siguientes tecnologías y librerías:
 
